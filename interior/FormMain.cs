@@ -18,11 +18,17 @@ namespace interior
     public partial class FrmMain : Form
     {
 
-        public int mode;
+        public int mode; // 0일때 방 추가모드, 1일때 객체 추가모드
+        int x;
+        int y;
+        int z;
+        string objType;
+        string objName;
+        
 
         public FrmMain()
         {
-            mode = 0;
+            mode = 0; 
             InitializeComponent();
         }
 
@@ -30,10 +36,26 @@ namespace interior
         {
             DlgObjCreate dlgObjCreate = new DlgObjCreate();
             dlgObjCreate.ShowDialog();
+
             if(dlgObjCreate.DialogResult == DialogResult.OK)
             {
+
+                objType = dlgObjCreate.TypeGave;
+                objName = dlgObjCreate.NameGave;
+                if (objType == "문")
+                {
+
+                }
+                else
+                {
+                    x = dlgObjCreate.XGave;
+                    y = dlgObjCreate.YGave;
+                    z = dlgObjCreate.ZGave;
+                }
                 mode = 1;
+
             }
+            else { mode = 0; }
 
         }
 
@@ -94,9 +116,14 @@ namespace interior
 
         Pen pen = new Pen(Color.Black);
         Rectangle r = new Rectangle();
+        Pen redPen = new Pen(Color.Red);
+        Rectangle door = new Rectangle();
         bool isHold = false;
         Walllist rooms = new Walllist();
         Point start, end;
+        ObjList objs = new ObjList();
+
+        
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -108,7 +135,22 @@ namespace interior
                 r.Location = e.Location;
                 isHold = true;
                 start = e.Location;
-            } else if (mode == 2)
+            }
+            else if(mode == 1) // 객체추가모드
+            {
+                isHold = false;
+                door.Location = e.Location;
+                door.Width = 10;
+                door.Height = 10;
+                objs.Add(objName, e.Location, 10, 10, 10, objType);
+                listObj.Items.Add(objs.Last().name + " " +e.Location +" " + objs.Last().objType);
+
+                panel1.Refresh();
+                mode = 0;
+
+
+            }
+            else if (mode == 2)
             {
                 start = e.Location;
             }
@@ -230,6 +272,11 @@ namespace interior
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
                 e.Graphics.DrawRectangle(pen, temp);
+            }
+            foreach (Object o in objs)
+            {
+                Rectangle temp = new Rectangle(o.locP.X, o.locP.Y, 10, 10);
+                e.Graphics.DrawRectangle(redPen, temp);
             }
         }
     }

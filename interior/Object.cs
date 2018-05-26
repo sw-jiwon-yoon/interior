@@ -12,6 +12,7 @@ namespace interior
         public int x;
         public int y;
         public int z;
+        public Point locP;
         public string name;
         public string objType;
 
@@ -20,11 +21,12 @@ namespace interior
 
     public class ObjList : List<Object>
     {
-        public void Add(string name, int x, int y, int z, string objType)
+        public void Add(string name, Point locP,int x, int y, int z, string objType)
         {
             var data = new Object
             {
                 name = name,
+                locP = locP,
                 x = x,
                 y = y,
                 z = z,
