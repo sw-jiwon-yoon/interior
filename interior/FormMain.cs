@@ -505,12 +505,18 @@ namespace interior
             foreach (Object o in objs)
             {
                 Rectangle temp = new Rectangle(o.locP.X, o.locP.Y, 10, 10);
-                if(o.objType == "문")
+                if (o.objType == "문")
                     e.Graphics.DrawRectangle(redPen, temp);
-                else if(o.objType == "창문")
+                else if (o.objType == "창문")
                     e.Graphics.DrawRectangle(bluePen, temp);
                 else
-                    e.Graphics.DrawImage(objimage, srcRect);
+                {
+                    temp.Width = o.x;
+                    temp.Height = o.y;
+                    temp.X = o.locP.X;
+                    temp.Y = o.locP.Y;
+                    e.Graphics.DrawImage(objimage, temp);
+                }
             }
         }
     }
