@@ -134,6 +134,17 @@ namespace interior
 
                         rooms = sl.wl;
                         objs = sl.ol;
+
+                        for(int i=0; i<rooms.Count; i++)
+                        {
+                            listRoom.Items.Add(rooms.LongCount() + " : (" + rooms[i].p1.X + " " + rooms[i].p1.Y + ") , (" + rooms[i].p2.X + " " + rooms[i].p2.Y + ") " + rooms[i].height);
+                        }
+
+                        for (int i = 0; i < objs.Count; i++)
+                        {
+                            listObj.Items.Add(objs[i].name + " " + objs[i].locP + " " + objs[i].objType);
+                        }
+
                     }
                 }
             }
@@ -148,12 +159,15 @@ namespace interior
         Point start, end;
         Walllist rooms = new Walllist();
         ObjList objs = new ObjList();
+        List<int> blocked_list = new List<int>();
 
 
         void Detecter()
         {
+            blocked_list.Clear();
             int roomcnt = rooms.Count;
-            int objcnt = 0;
+            int objcnt = 0; // 문과 창문의 개수
+            int idx = 0; // just indexing
             for (int i = 0; i < objs.Count; i++)
             {
                 if (objs[i].objType == "문" || objs[i].objType == "창문")
@@ -161,25 +175,66 @@ namespace interior
                     objcnt++;
                 }
             }
-            int[,] Arydetect = new int[roomcnt + objcnt, roomcnt + objcnt];
-
-            for (int i = 0; i < objcnt; i++)
+            int[,] Arydetect = new int[roomcnt + objs.Count+1, roomcnt + objs.Count+1]; // 0 ~ objcnt-1 : 문과 창문, objcnt ~ roomcnt+objcnt-1 : 방
+            bool[] visited = new bool[roomcnt+objcnt+1];
+            for (int i = 0; i < objs.Count; i++)
             {
                 if (objs[i].objType == "문" || objs[i].objType == "창문")
                 {
-                    for (int j = 0; j < roomcnt++; j++)
+                    for (int j = 0; j < roomcnt; j++)
                     {
-                        if (objs[i].locP.X < rooms[j].p2.X + 12 && objs[i].locP.X > rooms[j].p1.X - 12 && objs[i].locP.Y > rooms[j].p2.Y - 12 && objs[i].locP.Y < rooms[j].p1.Y + 12)
+                        if (objs[i].locP.X <= rooms[j].p2.X + 10 && objs[i].locP.X >= rooms[j].p1.X - 10 && objs[i].locP.Y <= rooms[j].p2.Y + 10 && objs[i].locP.Y >= rooms[j].p1.Y - 10)
                         {
-                            Arydetect[i, objcnt + j] = 1;
-                            Arydetect[objcnt + j, i] = 1;
+                            Arydetect[idx, objcnt + j] = 1;
+                            Arydetect[objcnt + j, idx] = 1;
                         }
                         else
                         {
-                            Arydetect[i, objcnt + j] = 0;
-                            Arydetect[objcnt + j, i] = 0;
+                            Arydetect[idx, objcnt + j] = 0;
+                            Arydetect[objcnt + j, idx] = 0;
                         }
                     }
+                    idx++;
+                }
+            }
+            for(int i = 0; i < objcnt; i++)
+            {
+                int cnt = 0;
+                for(int j = 0; j < roomcnt; j++)
+                {
+                    if (Arydetect[i, objcnt + j] == 1)
+                        cnt++;
+                }
+                if (cnt==1)
+                {
+                    Queue<int> q = new Queue<int>();
+                    q.Enqueue(i);
+                    while (q.Count > 0)
+                    {
+                        int here = q.Dequeue();
+                        for(int j = 0; j < objcnt + roomcnt; j++)
+                        {
+                            if (Arydetect[here, j] == 1)
+                            {
+                                if ((objcnt <= j && j < objcnt + roomcnt && !visited[j])||(0<=j&&j<objcnt))
+                                {
+                                    if (objcnt <= j && j < objcnt + roomcnt)
+                                        visited[j] = true;
+                                    q.Enqueue(j);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            bool flag = false;
+            for(int i = objcnt; i < objcnt + roomcnt; i++)
+            {
+                if (!visited[i])
+                {
+                    // 닫힌 공간 해주세요
+                    flag = true;
+                    blocked_list.Add(i);    // 닫힌 공간 담은 list
                 }
             }
         }
@@ -539,6 +594,10 @@ namespace interior
 
         }
 
+        private void btnRoomEdit_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
