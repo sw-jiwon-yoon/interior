@@ -145,7 +145,6 @@ namespace interior
             {
                 isHold = true;
                 start = e.Location;
-   //             panel1.Invalidate();
             }
         }
 
@@ -179,7 +178,7 @@ namespace interior
                 if (isHold)
                 {
                     panel1.CreateGraphics().DrawLine(purplePen, start, e.Location);
-                    panel1.Invalidate(true);
+                    panel1.Invalidate();
                 }
             }
         }
@@ -442,7 +441,7 @@ namespace interior
 
         private void btnObjRemove_Click(object sender, EventArgs e)
         {
-            if (listRoom.SelectedIndex >= 0)
+            if (listObj.SelectedIndex >= 0)
             {
                 objs.RemoveAt(listObj.SelectedIndex);
                 listObj.Items.Remove(listObj.SelectedItem);
