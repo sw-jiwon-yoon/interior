@@ -95,7 +95,6 @@ namespace interior
             {
                 int width = e.Location.X - r.Location.X;
                 int height = e.Location.Y - r.Location.Y;
-
                 r.Width = width;
                 r.Height = height;
 
@@ -107,12 +106,15 @@ namespace interior
         {
             int width = e.Location.X - r.Location.X;
             int height = e.Location.Y - r.Location.Y;
+            if (width > 0 && height > 0)
+            {
+                r.Width = width;
+                r.Height = height;
 
-            r.Width = width;
-            r.Height = height;
+                end = e.Location;
 
-            end = e.Location;
-            rooms.Add(start, end, 10);
+                rooms.Add(start, end, 10);
+            }
             isHold = false;
             panel1.Invalidate();
 
