@@ -32,6 +32,9 @@ namespace interior
             InitializeComponent();
         }
 
+        Image objimage;
+
+ 
         private void btnObjCreate_Click(object sender, EventArgs e)
         {
             DlgObjCreate dlgObjCreate = new DlgObjCreate();
@@ -48,6 +51,14 @@ namespace interior
                 }
                 else
                 {
+                    if (objType == "컴퓨터")
+                    {
+                        objimage = Properties.Resources.computer;
+                    }
+                    else if (objType == "장롱")
+                    {
+                        objimage = Properties.Resources.closet;
+                    }
                     x = dlgObjCreate.XGave;
                     y = dlgObjCreate.YGave;
                     z = dlgObjCreate.ZGave;
@@ -182,6 +193,9 @@ namespace interior
                 }
             }
         }
+
+        Rectangle destRect;
+        Rectangle srcRect;
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -392,7 +406,11 @@ namespace interior
                 }
                 else
                 {
-                    objs.Add(objName, e.Location, 10, 10, 10, objType);
+
+                    srcRect.Location = e.Location;
+                    srcRect.Width = y;
+                    srcRect.Height = x;
+                    objs.Add(objName, e.Location, x, y, z, objType);
                     listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
                 }
 
@@ -474,6 +492,8 @@ namespace interior
                     e.Graphics.DrawRectangle(redPen, temp);
                 else if(o.objType == "창문")
                     e.Graphics.DrawRectangle(bluePen, temp);
+                else
+                    e.Graphics.DrawImage(objimage, srcRect);
             }
         }
     }
