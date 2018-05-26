@@ -138,8 +138,6 @@ namespace interior
             }
             else if(mode == 1) // 객체추가모드
             {
-
-                
                 
             }
             else if (mode == 2)
