@@ -40,10 +40,9 @@ namespace interior
         {
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
-                sfd.Filter = "JPG-Files|*.jpg";
+                sfd.Filter = "BMP-Files|*.bmp";
                 if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-
                 }
             }
         }

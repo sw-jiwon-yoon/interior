@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.btnObjCreate = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.새로만들기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +39,7 @@
             this.끝내기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.제작ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1.SuspendLayout();
+            this.lblWarn = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,25 +52,6 @@
             this.btnObjCreate.Text = "객체 추가";
             this.btnObjCreate.UseVisualStyleBackColor = true;
             this.btnObjCreate.Click += new System.EventHandler(this.btnObjCreate_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(21, 53);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(724, 476);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "보기";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 446);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Warning";
             // 
             // menuStrip1
             // 
@@ -153,19 +132,26 @@
             this.제작ToolStripMenuItem.Text = "제작";
             this.제작ToolStripMenuItem.Click += new System.EventHandler(this.제작ToolStripMenuItem_Click);
             // 
+            // lblWarn
+            // 
+            this.lblWarn.AutoSize = true;
+            this.lblWarn.Location = new System.Drawing.Point(30, 510);
+            this.lblWarn.Name = "lblWarn";
+            this.lblWarn.Size = new System.Drawing.Size(60, 15);
+            this.lblWarn.TabIndex = 0;
+            this.lblWarn.Text = "Warning";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 556);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.lblWarn);
             this.Controls.Add(this.btnObjCreate);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
-            this.Text = "Interior";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Text = "Self Interior Program";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -176,7 +162,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnObjCreate;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 열기ToolStripMenuItem;
@@ -187,7 +172,7 @@
         private System.Windows.Forms.ToolStripMenuItem 도움말ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 제작ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 새로만들기ToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblWarn;
     }
 }
 

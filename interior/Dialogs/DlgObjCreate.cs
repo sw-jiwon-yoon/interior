@@ -19,6 +19,7 @@ namespace interior.Dialogs
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
 
@@ -57,6 +58,10 @@ namespace interior.Dialogs
                 txtY.Visible = true;
                 txtZ.Visible = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -38,6 +38,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtZ = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtObjname = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listType
@@ -52,7 +54,7 @@
             "객체2"});
             this.listType.Location = new System.Drawing.Point(61, 71);
             this.listType.Name = "listType";
-            this.listType.Size = new System.Drawing.Size(120, 94);
+            this.listType.Size = new System.Drawing.Size(139, 109);
             this.listType.TabIndex = 0;
             this.listType.Click += new System.EventHandler(this.listType_Click);
             // 
@@ -68,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(237, 56);
+            this.label2.Location = new System.Drawing.Point(237, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 15);
             this.label2.TabIndex = 2;
@@ -77,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(237, 86);
+            this.label3.Location = new System.Drawing.Point(237, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 3;
@@ -86,14 +88,14 @@
             // 
             // txtX
             // 
-            this.txtX.Location = new System.Drawing.Point(298, 53);
+            this.txtX.Location = new System.Drawing.Point(298, 88);
             this.txtX.Name = "txtX";
             this.txtX.Size = new System.Drawing.Size(100, 25);
             this.txtX.TabIndex = 4;
             // 
             // txtY
             // 
-            this.txtY.Location = new System.Drawing.Point(298, 83);
+            this.txtY.Location = new System.Drawing.Point(298, 118);
             this.txtY.Name = "txtY";
             this.txtY.Size = new System.Drawing.Size(100, 25);
             this.txtY.TabIndex = 5;
@@ -101,17 +103,17 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(240, 145);
+            this.btnOk.Location = new System.Drawing.Point(318, 195);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 6;
-            this.btnOk.Text = "확인";
+            this.btnOk.Text = "추가";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(323, 145);
+            this.btnCancel.Location = new System.Drawing.Point(399, 195);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -121,7 +123,7 @@
             // 
             // txtZ
             // 
-            this.txtZ.Location = new System.Drawing.Point(298, 112);
+            this.txtZ.Location = new System.Drawing.Point(298, 148);
             this.txtZ.Name = "txtZ";
             this.txtZ.Size = new System.Drawing.Size(100, 25);
             this.txtZ.TabIndex = 9;
@@ -129,17 +131,35 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(237, 115);
+            this.label4.Location = new System.Drawing.Point(237, 151);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "높이";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(237, 53);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(37, 15);
+            this.lblName.TabIndex = 10;
+            this.lblName.Text = "이름";
+            // 
+            // txtObjname
+            // 
+            this.txtObjname.Location = new System.Drawing.Point(298, 50);
+            this.txtObjname.Name = "txtObjname";
+            this.txtObjname.Size = new System.Drawing.Size(100, 25);
+            this.txtObjname.TabIndex = 11;
             // 
             // DlgObjCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 230);
+            this.Controls.Add(this.txtObjname);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtZ);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancel);
@@ -169,5 +189,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtZ;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtObjname;
     }
 }
