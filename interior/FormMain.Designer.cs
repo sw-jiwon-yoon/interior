@@ -151,10 +151,6 @@
             this.lblWarn.TabIndex = 0;
             this.lblWarn.Text = "Warning";
             // 
-<<<<<<< HEAD
-=======
-
->>>>>>> 99a159fe15eb531a88e3ab0119f6278f627ed945
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
@@ -167,10 +163,6 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-<<<<<<< HEAD
-=======
-
->>>>>>> 99a159fe15eb531a88e3ab0119f6278f627ed945
             // listRoom
             // 
             this.listRoom.FormattingEnabled = true;
