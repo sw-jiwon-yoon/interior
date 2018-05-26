@@ -216,7 +216,10 @@ namespace interior
         }
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
+            rooms.RemoveAt(listRoom.SelectedIndex);
             listRoom.Items.Remove(listRoom.SelectedItem);
+
+            panel1.Refresh();
         }
 
         private void btnMeasure_Click(object sender, EventArgs e)
