@@ -24,9 +24,7 @@ namespace interior
         int z;
         string objType;
         string objName;
-        Image objimage;
-
-        string Filename;
+        
 
         public FrmMain()
         {
@@ -44,21 +42,12 @@ namespace interior
 
                 objType = dlgObjCreate.TypeGave;
                 objName = dlgObjCreate.NameGave;
-
                 if (objType == "문" || objType == "창문")
                 {
 
                 }
                 else
                 {
-                    if(objType == "컴퓨터")
-                    {
-                        objimage = Properties.Resources.computer;
-                    }
-                    else if(objType == "장롱")
-                    {
-                        objimage = Properties.Resources.closet;
-                    }
                     x = dlgObjCreate.XGave;
                     y = dlgObjCreate.YGave;
                     z = dlgObjCreate.ZGave;
@@ -149,7 +138,7 @@ namespace interior
             }
             else if(mode == 1) // 객체추가모드
             {
-                
+                // 일단 비워둔다.
             }
             else if (mode == 2)
             {
@@ -193,9 +182,6 @@ namespace interior
                 }
             }
         }
-
-        Rectangle destRect;
-        Rectangle srcRect;
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -267,20 +253,143 @@ namespace interior
             }
             else if (mode == 1)
             {
-
                 isHold = false;
 
-                if (objName == "창문" || objName == "문")
+                // 마그네틱을 이용해서 문과 창문을 가까운 벽에 붙여준다.(창문과 문의 크기는 무시한다)
+                // 맨하튼 거리를 사용해서 거리를 측정한다.
+                // 모두 50보다 멀면 생성되지 않는다.
+               
+                Point nearest_coordinate = new Point();
+                int nearest_dist=1000000;
+                int temp_dist;
+                foreach (Wall o in rooms)
                 {
-                    objs.Add(objName, e.Location, 10, 10, 10, objType);
+                    if (e.Location.Y <= o.p1.Y)
+                    {
+                        if(e.Location.X<=o.p1.X)
+                        {
+                            temp_dist = Math.Abs(o.p1.X - e.Location.X) + Math.Abs(o.p1.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p1.X;
+                                nearest_coordinate.Y = o.p1.Y;
+                            }
+                        }
+                        else if (e.Location.X <= o.p2.X)
+                        {
+                            temp_dist = Math.Abs(o.p1.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = e.Location.X;
+                                nearest_coordinate.Y = o.p1.Y;
+                            }
+                        }
+                        else
+                        {
+                            temp_dist = Math.Abs(o.p2.X - e.Location.X) + Math.Abs(o.p1.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p2.X;
+                                nearest_coordinate.Y = o.p1.Y;
+                            }
+                        }
+                    }   
+                    else if(e.Location.Y <= o.p2.Y)
+                    {
+                        if (e.Location.X <= o.p1.X)
+                        {
+                            temp_dist = Math.Abs(o.p1.X - e.Location.X);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p1.X;
+                                nearest_coordinate.Y = e.Location.Y;
+                            }
+                        }
+                        else if (e.Location.X <= o.p2.X)
+                        {
+                            temp_dist = Math.Abs(o.p1.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = e.Location.X;
+                                nearest_coordinate.Y = o.p1.Y;
+                            }
+                            temp_dist = Math.Abs(o.p2.X - e.Location.X);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p2.X;
+                                nearest_coordinate.Y = e.Location.Y;
+                            }
+                            temp_dist = Math.Abs(o.p2.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = e.Location.X;
+                                nearest_coordinate.Y = o.p2.Y;
+                            }
+                            temp_dist = Math.Abs(o.p1.X - e.Location.X);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p1.X;
+                                nearest_coordinate.Y = e.Location.Y;
+                            }
+                        }
+                        else
+                        {
+                            temp_dist = Math.Abs(o.p2.X - e.Location.X);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p2.X;
+                                nearest_coordinate.Y = e.Location.Y;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (e.Location.X <= o.p1.X)
+                        {
+                            temp_dist = Math.Abs(o.p1.X - e.Location.X) + Math.Abs(o.p2.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p1.X;
+                                nearest_coordinate.Y = o.p2.Y;
+                            }
+                        }
+                        else if (e.Location.X <= o.p2.X)
+                        {
+                            temp_dist = Math.Abs(o.p2.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = e.Location.X;
+                                nearest_coordinate.Y = o.p2.Y;
+                            }
+                        }
+                        else
+                        {
+                            temp_dist = Math.Abs(o.p2.X - e.Location.X) + Math.Abs(o.p2.Y - e.Location.Y);
+                            if (nearest_dist >= temp_dist)
+                            {
+                                nearest_dist = temp_dist;
+                                nearest_coordinate.X = o.p2.X;
+                                nearest_coordinate.Y = o.p2.Y;
+                            }
+                        }
+                    }
                 }
-                else
-                {
-           //         destRect = new Rectangle(e.Location.X, e.Location.Y, 50, 50); // Create rectangle for displaying image.
-                    srcRect = new Rectangle(e.Location.X, e.Location.Y, x, y); // Create rectangle for source image.
-                    objs.Add(objName, e.Location, x, y, z, objType);
-                }
-                listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
+
+                objs.Add(objName, nearest_coordinate, 10, 10, 10, objType); // 가장 가까운 점으로 보낸다.
+                listObj.Items.Add(objs.Last().name + " " + nearest_coordinate + " " + objs.Last().objType);
+                //objs.Add(objName, e.Location, 10, 10, 10, objType);
+                //listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
 
                 panel1.Refresh();
 
@@ -289,20 +398,14 @@ namespace interior
             else if (mode == 2)
             {
                 end = e.Location;
-                isHold = false;
                 panel1.Refresh();
                 double distance = Math.Sqrt((double)((start.X - end.X) * (start.X - end.X) + (start.Y - end.Y) * (start.Y - end.Y)));
                 MessageBox.Show(string.Format("길이 : {0,0:F2}", distance));
                 mode = 0;
-
+                isHold = false;
             }
             
         }
-
-
-
-
-
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
             if (listRoom.SelectedIndex >= 0)
@@ -347,6 +450,7 @@ namespace interior
 
         }
 
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             if (mode == 2)
@@ -361,12 +465,10 @@ namespace interior
             foreach (Object o in objs)
             {
                 Rectangle temp = new Rectangle(o.locP.X, o.locP.Y, 10, 10);
-                if (o.objType == "문")
+                if(o.objType == "문")
                     e.Graphics.DrawRectangle(redPen, temp);
-                else if (o.objType == "창문")
+                else if(o.objType == "창문")
                     e.Graphics.DrawRectangle(bluePen, temp);
-                else
-                    e.Graphics.DrawImage(objimage, srcRect);
             }
         }
     }
