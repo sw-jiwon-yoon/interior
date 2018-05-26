@@ -139,6 +139,7 @@ namespace interior
             else if(mode == 1) // 객체추가모드
             {
 
+
                 isHold = true;
                
                 objs.Add(objName, e.Location, 10, 10, 10, objType);
@@ -151,7 +152,7 @@ namespace interior
                 mode = 0;
                 
 
-
+                
             }
             else if (mode == 2)
             {
@@ -254,7 +255,18 @@ namespace interior
                 panel1.Invalidate();
 
             }
-            else if (mode == 1) ;
+            else if (mode == 1)
+            {
+
+                isHold = false;
+
+                objs.Add(objName, e.Location, 10, 10, 10, objType);
+                listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
+
+                panel1.Refresh();
+
+                mode = 0;
+            }
             else if (mode == 2)
             {
                 end = e.Location;
