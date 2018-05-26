@@ -22,7 +22,9 @@ namespace interior
         {
             DlgObjCreate dlgObjCreate = new DlgObjCreate();
             dlgObjCreate.ShowDialog();
-            
+
+
+
         }
 
         private void 저장ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace interior
                     Bitmap bm = new Bitmap(width, height);
                     panel1.DrawToBitmap(bm, new Rectangle(0, 0, width, height));
                     bm.Save(sfd.FileName);
-                }   
+                }
             };
         }
 
@@ -70,7 +72,7 @@ namespace interior
                 ofd.Filter = "XML-Files|*.xml";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    
+
                 }
             }
         }
@@ -81,9 +83,11 @@ namespace interior
         Walllist rooms = new Walllist();
         Point start, end;
 
-
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
+            int panel1Width = panel1.Size.Width;
+            int panel1Height = panel1.Size.Height;
+
             r.Location = e.Location;
             isHold = true;
             start = e.Location;
@@ -93,8 +97,17 @@ namespace interior
         {
             if (isHold)
             {
+                int panel1Width = panel1.Size.Width;
+                int panel1Height = panel1.Size.Height;
+
                 int width = e.Location.X - r.Location.X;
+                if (e.Location.X >= panel1Width)
+                    width = panel1Width - r.Location.X;
                 int height = e.Location.Y - r.Location.Y;
+
+                if (e.Location.Y >= panel1Height)
+                    height = panel1Height - r.Location.Y;
+
                 r.Width = width;
                 r.Height = height;
 
@@ -104,24 +117,38 @@ namespace interior
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            int width = e.Location.X - r.Location.X;
-            int height = e.Location.Y - r.Location.Y;
-            if (width > 0 && height > 0)
-            {
-                r.Width = width;
-                r.Height = height;
+            int panel1Width = panel1.Size.Width;
+            int panel1Height = panel1.Size.Height;
+            //Console.WriteLine(string.Format("args1: {0} args2: {1}", panel1Width, panel1Height));
+            end = e.Location;
+
+            int width = end.X - r.Location.X;
+
+            int height = end.Y - r.Location.Y;
+
+            if (end.X >= panel1Width)
+                {
+                    width = panel1Width - r.Location.X;
+                    end.X = panel1Width;
+                }
+
+                if (end.Y >= panel1Height)
+                {
+                    height = panel1Height - r.Location.Y;
+                    end.Y = panel1Height;
+                }
 
                 end = e.Location;
 
                 rooms.Add(start, end, 10);
-            }
+
             isHold = false;
             panel1.Invalidate();
 
             listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
 
 
-            //         panel1.Invalidate();
+            //panel1.Invalidate();
 
             lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
         }
@@ -129,11 +156,12 @@ namespace interior
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
             listRoom.Items.Remove(listRoom.SelectedItem);
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            foreach(Wall o in rooms)
+            foreach (Wall o in rooms)
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
                 e.Graphics.DrawRectangle(pen, temp);
