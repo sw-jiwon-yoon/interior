@@ -46,5 +46,16 @@ namespace interior
                 }
             }
         }
+
+        private void 끝내기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void 제작ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAbout frmAbout = new FormAbout();
+            frmAbout.ShowDialog();
+        }
     }
 }

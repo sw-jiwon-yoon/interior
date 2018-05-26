@@ -135,6 +135,7 @@
             this.끝내기ToolStripMenuItem.Name = "끝내기ToolStripMenuItem";
             this.끝내기ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.끝내기ToolStripMenuItem.Text = "끝내기";
+            this.끝내기ToolStripMenuItem.Click += new System.EventHandler(this.끝내기ToolStripMenuItem_Click);
             // 
             // 도움말ToolStripMenuItem
             // 
@@ -147,8 +148,9 @@
             // 제작ToolStripMenuItem
             // 
             this.제작ToolStripMenuItem.Name = "제작ToolStripMenuItem";
-            this.제작ToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
+            this.제작ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.제작ToolStripMenuItem.Text = "제작";
+            this.제작ToolStripMenuItem.Click += new System.EventHandler(this.제작ToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
