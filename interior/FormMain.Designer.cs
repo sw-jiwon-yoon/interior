@@ -53,7 +53,7 @@
             // 
             // btnObjCreate
             // 
-            this.btnObjCreate.Location = new System.Drawing.Point(1127, 113);
+            this.btnObjCreate.Location = new System.Drawing.Point(841, 369);
             this.btnObjCreate.Name = "btnObjCreate";
             this.btnObjCreate.Size = new System.Drawing.Size(80, 41);
             this.btnObjCreate.TabIndex = 0;
@@ -69,7 +69,7 @@
             this.도움말ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1407, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1237, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -155,14 +155,14 @@
             // 
             this.listRoom.FormattingEnabled = true;
             this.listRoom.ItemHeight = 15;
-            this.listRoom.Location = new System.Drawing.Point(841, 160);
+            this.listRoom.Location = new System.Drawing.Point(948, 55);
             this.listRoom.Name = "listRoom";
             this.listRoom.Size = new System.Drawing.Size(270, 289);
             this.listRoom.TabIndex = 4;
             // 
             // btnRoomRemove
             // 
-            this.btnRoomRemove.Location = new System.Drawing.Point(1031, 113);
+            this.btnRoomRemove.Location = new System.Drawing.Point(841, 245);
             this.btnRoomRemove.Name = "btnRoomRemove";
             this.btnRoomRemove.Size = new System.Drawing.Size(80, 41);
             this.btnRoomRemove.TabIndex = 6;
@@ -172,7 +172,7 @@
             // 
             // btnRoomEdit
             // 
-            this.btnRoomEdit.Location = new System.Drawing.Point(936, 113);
+            this.btnRoomEdit.Location = new System.Drawing.Point(841, 189);
             this.btnRoomEdit.Name = "btnRoomEdit";
             this.btnRoomEdit.Size = new System.Drawing.Size(80, 41);
             this.btnRoomEdit.TabIndex = 7;
@@ -182,7 +182,7 @@
             // 
             // btnObjEdit
             // 
-            this.btnObjEdit.Location = new System.Drawing.Point(1224, 113);
+            this.btnObjEdit.Location = new System.Drawing.Point(841, 429);
             this.btnObjEdit.Name = "btnObjEdit";
             this.btnObjEdit.Size = new System.Drawing.Size(80, 41);
             this.btnObjEdit.TabIndex = 8;
@@ -191,7 +191,7 @@
             // 
             // btnObjRemove
             // 
-            this.btnObjRemove.Location = new System.Drawing.Point(1317, 113);
+            this.btnObjRemove.Location = new System.Drawing.Point(841, 489);
             this.btnObjRemove.Name = "btnObjRemove";
             this.btnObjRemove.Size = new System.Drawing.Size(80, 41);
             this.btnObjRemove.TabIndex = 9;
@@ -203,7 +203,7 @@
             // 
             this.listObj.FormattingEnabled = true;
             this.listObj.ItemHeight = 15;
-            this.listObj.Location = new System.Drawing.Point(1127, 160);
+            this.listObj.Location = new System.Drawing.Point(948, 401);
             this.listObj.Name = "listObj";
             this.listObj.Size = new System.Drawing.Size(270, 289);
             this.listObj.TabIndex = 10;
@@ -235,7 +235,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1407, 717);
+            this.ClientSize = new System.Drawing.Size(1237, 717);
             this.Controls.Add(this.btnMeasure);
             this.Controls.Add(this.listObj);
             this.Controls.Add(this.btnObjRemove);
