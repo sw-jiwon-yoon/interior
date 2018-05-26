@@ -267,10 +267,13 @@ namespace interior
         }
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
-            rooms.RemoveAt(listRoom.SelectedIndex);
-            listRoom.Items.Remove(listRoom.SelectedItem);
+            if (listRoom.SelectedIndex >= 0)
+            {
+                rooms.RemoveAt(listRoom.SelectedIndex);
+                listRoom.Items.Remove(listRoom.SelectedItem);
 
-            panel1.Refresh();
+                panel1.Refresh();
+            }
         }
 
         private void btnMeasure_Click(object sender, EventArgs e)
@@ -288,6 +291,22 @@ namespace interior
             rooms.Clear();
             listRoom.Items.Clear();
             panel1.Refresh();
+        }
+
+        private void btnObjRemove_Click(object sender, EventArgs e)
+        {
+            if (listRoom.SelectedIndex >= 0)
+            {
+                objs.RemoveAt(listObj.SelectedIndex);
+                listObj.Items.Remove(listObj.SelectedItem);
+
+                panel1.Refresh();
+            }
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
