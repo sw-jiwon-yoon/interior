@@ -249,11 +249,6 @@ namespace interior
                             break;
                         }
                     }
-
-                    /*
-                     다른 객체와 충돌이 일어나는 지, 여기서 확인하면 된다!!!!!!!!
-                    */
-
                     if (!conflict_chk)  // 충돌이 없어야 rooms에 넣는다.
                     {
                         rooms.Add(start, end, 10);
@@ -400,18 +395,43 @@ namespace interior
                             }
                         }
                     }
-
                     objs.Add(objName, nearest_coordinate, 10, 10, 10, objType); // 가장 가까운 점으로 보낸다.
                     listObj.Items.Add(objs.Last().name + " " + nearest_coordinate + " " + objs.Last().objType);
                 }
-                else
+                else // (mode == 1)
                 {
+                    // 객체가 벽과 충돌을 일으키는 지에 대해서 탐구하자.
+                    bool conflict_chk = false;
+                    foreach (Wall o in rooms)
+                    {
 
-                    srcRect.Location = e.Location;
-                    srcRect.Width = y;
-                    srcRect.Height = x;
-                    objs.Add(objName, e.Location, x, y, z, objType);
-                    listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
+                        if ((o.p2.X <= e.Location.X) || (e.Location.X + x <= o.p1.X) || (o.p2.Y <= e.Location.Y) || (e.Location.Y + y <= o.p1.Y))   // 만족하면 충돌이 없다.
+                        {
+                            continue;
+                        }
+                        else  // 충돌이 일어날 경우
+                        {
+                            if (((o.p1.X < e.Location.X) && (o.p1.Y < e.Location.Y) && (o.p2.X > e.Location.X + x) && (o.p2.Y > e.Location.Y +y))) // 방을 품는 좌표일 시, 충돌이 없다.
+                            {
+                                continue;
+                            }
+                            conflict_chk = true;
+                            break;
+                        }
+                    }
+                    if (!conflict_chk)  // 충돌이 없어야 objs에 넣는다.
+                    {
+                        srcRect.Location = e.Location;
+                        srcRect.Width = x;
+                        srcRect.Height = y;
+                        objs.Add(objName, e.Location, x, y, z, objType);
+                        listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
+                        
+                    }
+
+                    
+                    //objs.Add(objName, e.Location, x, y, z, objType);
+                    //listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
                 }
 
                 panel1.Refresh();
