@@ -404,7 +404,6 @@ namespace interior
                     bool conflict_chk = false;
                     foreach (Wall o in rooms)
                     {
-
                         if ((o.p2.X <= e.Location.X) || (e.Location.X + x <= o.p1.X) || (o.p2.Y <= e.Location.Y) || (e.Location.Y + y <= o.p1.Y))   // 만족하면 충돌이 없다.
                         {
                             continue;
