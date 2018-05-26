@@ -159,7 +159,7 @@ namespace interior
         Point start, end;
         Walllist rooms = new Walllist();
         ObjList objs = new ObjList();
-        List<int> blocked_list = new List<int>();
+        List<Wall> blocked_list = new List<Wall>();
 
 
         void Detecter()
@@ -232,15 +232,15 @@ namespace interior
             {
                 if (!visited[i])
                 {
-                    // 닫힌 공간 해주세요
                     flag = true;
-                    blocked_list.Add(i); // 닫힌 공간 담은 list
+                    blocked_list.Add(rooms[i-objcnt]); // 닫힌 공간 담은 list
 
                     lblWarn.Text = "닫힌 공간이 존재합니다.";
                 }
 
             }
-            if(flag == false) lblWarn.Text = "닫힌 공간이 없습니다.";
+            if(!flag)
+                lblWarn.Text = "닫힌 공간이 없습니다.";
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -611,9 +611,25 @@ namespace interior
             foreach (Wall o in rooms)
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
-                SolidBrush solidBrush = new SolidBrush(
-   Color.FromArgb(200, 200, 200, 200));
-                e.Graphics.DrawRectangle(pen, temp);
+                bool flag = false;
+                for(int i = 0; i < blocked_list.Count; i++)
+                {
+                    if (o.p1.X == blocked_list[i].p1.X && o.p1.Y == blocked_list[i].p1.Y)
+                    {
+                        flag = true;
+                    }
+                }
+                SolidBrush solidBrush = new SolidBrush(Color.FromArgb(200, 200, 200, 200));
+                if (flag)
+                {
+                    e.Graphics.DrawRectangle(redPen, temp);
+                    Detecter();
+                }
+                else
+                {
+                    e.Graphics.DrawRectangle(pen, temp);
+                    Detecter();
+                }
                 e.Graphics.FillRectangle(solidBrush, temp);
             }
             foreach (Object o in objs)
