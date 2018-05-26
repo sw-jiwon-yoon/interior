@@ -645,11 +645,13 @@ namespace interior
                 }
                 else
                 {
-                    e.Graphics.FillRectangle(new SolidBrush(Color.Purple), temp);
                     temp.Width = o.x;
                     temp.Height = o.y;
                     temp.X = o.locP.X;
                     temp.Y = o.locP.Y;
+                    e.Graphics.FillRectangle(new SolidBrush(Color.Purple), temp);
+                    e.Graphics.DrawLine(pen, o.locP, new Point(temp.X+temp.Width,temp.Y+temp.Height));
+
                     Font drawFont = new Font("Arial", 10, FontStyle.Bold);
                     SolidBrush drawBrush = new SolidBrush(Color.Black);
                     Rectangle drawRect = new Rectangle(temp.X, temp.Y + o.y, o.x, o.y);
