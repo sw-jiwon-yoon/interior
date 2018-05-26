@@ -622,7 +622,6 @@ namespace interior
                 SolidBrush solidBrush = new SolidBrush(Color.FromArgb(200, 200, 200, 200));
                 if (flag)
                 {
-
                     e.Graphics.DrawRectangle(redPen, temp);
                 }
                 else
