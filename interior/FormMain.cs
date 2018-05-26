@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.Xml.Serialization;
+using System.IO;
+
 using interior.Dialogs;
 
 namespace interior
 {
     public partial class FrmMain : Form
     {
+
+        public int mode;
+
         public FrmMain()
         {
+            mode = 0;
             InitializeComponent();
         }
 
@@ -22,8 +30,10 @@ namespace interior
         {
             DlgObjCreate dlgObjCreate = new DlgObjCreate();
             dlgObjCreate.ShowDialog();
-
-
+            if(dlgObjCreate.DialogResult == DialogResult.OK)
+            {
+                mode = 1;
+            }
 
         }
 
@@ -34,6 +44,11 @@ namespace interior
                 sfd.Filter = "XML-Files|*.xml";
                 if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Wall>));
+                    using (StreamWriter sw = new StreamWriter(Path.GetFullPath(sfd.FileName)))
+                    {
+                        serializer.Serialize(sw, rooms);
+                    }
                 }
             }
         }
@@ -85,83 +100,96 @@ namespace interior
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            int panel1Width = panel1.Size.Width;
-            int panel1Height = panel1.Size.Height;
-
-            r.Location = e.Location;
-            isHold = true;
-            start = e.Location;
-        }
-
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isHold)
+            if (mode == 0)
             {
                 int panel1Width = panel1.Size.Width;
                 int panel1Height = panel1.Size.Height;
 
-                //좌표 값이 넘어가게되면 panel의 끝 좌표를 넣어준다.
+                r.Location = e.Location;
+                isHold = true;
+                start = e.Location;
+            }
+        }
 
-                int width = e.Location.X - r.Location.X;
-                if (e.Location.X >= panel1Width)
-                    width = panel1Width - r.Location.X;
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mode == 0)
+            {
+                if (isHold)
+                {
+                    int panel1Width = panel1.Size.Width;
+                    int panel1Height = panel1.Size.Height;
 
-                int height = e.Location.Y - r.Location.Y;
-                if (e.Location.Y >= panel1Height)
-                    height = panel1Height - r.Location.Y;
+                    //좌표 값이 넘어가게되면 panel의 끝 좌표를 넣어준다.
 
-                r.Width = width;
-                r.Height = height;
+                    int width = e.Location.X - r.Location.X;
+                    if (e.Location.X >= panel1Width)
+                        width = panel1Width - r.Location.X;
 
-                panel1.Invalidate();
+                    int height = e.Location.Y - r.Location.Y;
+                    if (e.Location.Y >= panel1Height)
+                        height = panel1Height - r.Location.Y;
+
+                    r.Width = width;
+                    r.Height = height;
+
+                    panel1.Invalidate();
+                }
             }
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            int panel1Width = panel1.Size.Width;
-            int panel1Height = panel1.Size.Height;
-            //Console.WriteLine(string.Format("args1: {0} args2: {1}", panel1Width, panel1Height));
-            end = e.Location;
-
-            //좌표 값이 넘어가게되면 panel의 끝 좌표를 넣어준다.
-            int width = end.X - r.Location.X;
-            if (end.X >= panel1Width)
+            if (mode == 0)
             {
-                width = panel1Width - r.Location.X;
-                end.X = panel1Width;
+                int panel1Width = panel1.Size.Width;
+                int panel1Height = panel1.Size.Height;
+                //Console.WriteLine(string.Format("args1: {0} args2: {1}", panel1Width, panel1Height));
+                end = e.Location;
+
+                //좌표 값이 넘어가게되면 panel의 끝 좌표를 넣어준다.
+                int width = end.X - r.Location.X;
+                if (end.X >= panel1Width)
+                {
+                    width = panel1Width - r.Location.X;
+                    end.X = panel1Width;
+                }
+
+                int height = end.Y - r.Location.Y;
+                if (end.Y >= panel1Height)
+                {
+                    height = panel1Height - r.Location.Y;
+                    end.Y = panel1Height;
+                }
+
+                r.Width = width;
+                r.Height = height;
+
+                isHold = false; // 마우스 클릭 해제
+
+                // 좌에서 우로 그릴 시에만 room과 listRoom에 넣게 해준다.
+                if (start.X < end.X && start.Y < end.Y)
+                {
+                    rooms.Add(start, end, 10);
+                    listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
+
+
+                    //panel1.Invalidate();
+
+                    lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
+                }
             }
-
-            int height = end.Y - r.Location.Y;
-            if (end.Y >= panel1Height)
-            {
-                height = panel1Height - r.Location.Y;
-                end.Y = panel1Height;
-            }
-
-            r.Width = width;
-            r.Height = height;
-
-            isHold = false; // 마우스 클릭 해제
-
-            // 좌에서 우로 그릴 시에만 room과 listRoom에 넣게 해준다.
-            if (start.X < end.X && start.Y < end.Y)
-            {
-                rooms.Add(start, end, 10);
-                listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
-
-
-                //panel1.Invalidate();
-
-                lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
-            }
-
 
             panel1.Invalidate();
         }
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
             listRoom.Items.Remove(listRoom.SelectedItem);
+
+        }
+
+        private void btnMeasure_Click(object sender, EventArgs e)
+        {
 
         }
 

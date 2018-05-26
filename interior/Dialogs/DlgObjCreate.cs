@@ -65,7 +65,7 @@ namespace interior.Dialogs
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
