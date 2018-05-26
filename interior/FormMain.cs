@@ -116,10 +116,14 @@ namespace interior
                 rooms.Add(start, end, 10);
             }
             isHold = false;
+<<<<<<< HEAD
             panel1.Invalidate();
 
             listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
 
+=======
+            //         panel1.Invalidate();
+>>>>>>> 470a54a7ef3ab488e7ebedc50b4cb5612d52616a
             lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
         }
 
@@ -130,7 +134,11 @@ namespace interior
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(pen, r);
+            foreach(Object o in rooms)
+            {
+                Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
+                e.Graphics.DrawRectangle(pen, temp);
+            }
         }
     }
 }
