@@ -12,6 +12,52 @@ namespace interior.Dialogs
 {
     public partial class DlgObjCreate : Form
     {
+        public string TypeGave
+        {
+            get
+            {
+                return listType.SelectedItem.ToString();
+            }
+
+        }
+
+        public string NameGave
+        {
+            get
+            {
+                return txtObjname.Text; 
+            }
+
+        }
+
+        public int XGave
+        {
+            get
+            {
+                return int.Parse(txtX.ToString());
+            }
+
+        }
+
+        public int YGave
+        {
+            get
+            {
+                return int.Parse(txtY.ToString());
+            }
+
+        }
+
+        public int ZGave
+        {
+            get
+            {
+                return int.Parse(txtZ.ToString());
+            }
+
+        }
+
+
         public DlgObjCreate()
         {
             InitializeComponent();
