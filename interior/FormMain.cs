@@ -171,48 +171,38 @@ namespace interior
                 isHold = false; // 마우스 클릭 해제
 
 
-            // 좌에서 우로 그릴 시에만 room과 listRoom에 넣게 해준다.
-            if (start.X < end.X && start.Y < end.Y)
-            {
-                // 충돌이 일어나는 지 확인해서, 충돌이 일어나지 않는다면 rooms에 넣는다
-                bool conflict_chk = false;
-                foreach (Wall o in rooms)
-                {
-                    
-                    if ((o.p2.X <= start.X) || (end.X <= o.p1.X) || (o.p2.Y <= start.Y) || (end.Y <= o.p1.Y))   // 만족하면 충돌이 없다.
-                    {
-                        continue;
-                    }
-                    else  // 충돌이 일어날 경우
-                    {
-                        if(((o.p1.X<start.X)&&(o.p1.Y<start.Y)&&(o.p2.X>end.X)&&(o.p2.Y>end.Y))||((o.p1.X>start.X)&&(o.p1.Y>start.Y)&&(o.p2.X<end.X)&&(o.p2.Y<end.Y))) // 방을 품는 좌표일 시, 충돌이 없다.
-                        {
-                            continue;
-                        }
-                        conflict_chk = true;
-                        break;
-                    }
-                }
-                if (!conflict_chk)  // 충돌이 없어야 rooms에 넣는다.
-                {
-                    rooms.Add(start, end, 10);
-                    listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
-                    lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
-                }
-                
-            }
-
                 // 좌에서 우로 그릴 시에만 room과 listRoom에 넣게 해준다.
                 if (start.X < end.X && start.Y < end.Y)
                 {
-                    rooms.Add(start, end, 10);
-                    listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
-
-
-                    //panel1.Invalidate();
-
-                    lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
-                }
+                    // 충돌이 일어나는 지 확인해서, 충돌이 일어나지 않는다면 rooms에 넣는다
+                    bool conflict_chk = false;
+                    foreach (Wall o in rooms)
+                    {
+                    
+                        if ((o.p2.X <= start.X) || (end.X <= o.p1.X) || (o.p2.Y <= start.Y) || (end.Y <= o.p1.Y))   // 만족하면 충돌이 없다.
+                        {
+                            continue;
+                        }
+                        else  // 충돌이 일어날 경우
+                        {
+                            if(((o.p1.X<start.X)&&(o.p1.Y<start.Y)&&(o.p2.X>end.X)&&(o.p2.Y>end.Y))||((o.p1.X>start.X)&&(o.p1.Y>start.Y)&&(o.p2.X<end.X)&&(o.p2.Y<end.Y))) // 방을 품는 좌표일 시, 충돌이 없다.
+                            {
+                                continue;
+                            }
+                            conflict_chk = true;
+                            break;
+                        }
+                    }
+                    if (!conflict_chk)  // 충돌이 없어야 rooms에 넣는다.
+                    {
+                        rooms.Add(start, end, 10);
+                        listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
+                        lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
+                    }
+                
+                }    
+                panel1.Invalidate();
+                
             }
             else if (mode == 2)
             {
@@ -223,7 +213,6 @@ namespace interior
                 mode = 0;
             }
             
-            panel1.Invalidate();
         }
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
