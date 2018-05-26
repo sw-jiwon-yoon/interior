@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace interior
 {
-    public class @object
+    public class Object
     {
         public Point p1;
         public Point p2;
@@ -17,11 +17,11 @@ namespace interior
         // public Image texture;
     }
 
-    public class objlist : List<@object>
+    public class Objlist : List<Object>
     {
         public void Add(Point p1, Point p2, Size s1, int height)
         {
-            var data = new @object
+            var data = new Object
             {
                 p1 = p1,
                 p2 = p2,
