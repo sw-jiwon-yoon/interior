@@ -24,12 +24,23 @@ namespace interior
         int z;
         string objType;
         string objName;
-        
+        Rectangle floor = new Rectangle(0, 0, 820, 660);
+        Image floorimg = Properties.Resources.floor;
+
+
+
 
         public FrmMain()
         {
             mode = 0; 
             InitializeComponent();
+
+ //           Point p1 = new Point(0, 0);
+//            Point p2 = new Point(500, 500);
+            
+ //           rooms.Add(p1, p2, 10);
+ //           listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
+
         }
 
         Image objimage;
@@ -65,15 +76,19 @@ namespace interior
 
         private void 저장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SerialList sl = new SerialList();
+            sl.wl = rooms;
+            sl.ol = objs;
+
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "XML-Files|*.xml";
                 if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Wall>));
+                    XmlSerializer serializer = new XmlSerializer(typeof(SerialList));
                     using (StreamWriter sw = new StreamWriter(Path.GetFullPath(sfd.FileName)))
                     {
-                        serializer.Serialize(sw, rooms);
+                        serializer.Serialize(sw, sl);
                     }
                 }
             }
@@ -113,12 +128,30 @@ namespace interior
                 ofd.Filter = "XML-Files|*.xml";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    XmlSerializer deserializer = new XmlSerializer(typeof(SerialList));
+                    using (StreamReader sr = new StreamReader(Path.GetFullPath(ofd.FileName)))
+                    {
+                        SerialList sl = (SerialList)deserializer.Deserialize(sr);
 
+                        rooms = sl.wl;
+                        objs = sl.ol;
+
+                        for(int i=0; i<rooms.Count; i++)
+                        {
+                            listRoom.Items.Add(rooms.LongCount() + " : (" + rooms[i].p1.X + " " + rooms[i].p1.Y + ") , (" + rooms[i].p2.X + " " + rooms[i].p2.Y + ") " + rooms[i].height);
+                        }
+
+                        for (int i = 0; i < objs.Count; i++)
+                        {
+                            listObj.Items.Add(objs[i].name + " " + objs[i].locP + " " + objs[i].objType);
+                        }
+
+                    }
                 }
             }
         }
 
-        Pen pen = new Pen(Color.Black);
+        Pen pen = new Pen(Color.Black, 3.0f);
         Rectangle r = new Rectangle();
         Pen redPen = new Pen(Color.Red);
         Pen bluePen = new Pen(Color.Blue);
@@ -127,6 +160,7 @@ namespace interior
         Point start, end;
         Walllist rooms = new Walllist();
         ObjList objs = new ObjList();
+
 
         void Detecter()
         {
@@ -559,13 +593,21 @@ namespace interior
 
         }
 
+        private void btnRoomEdit_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.DrawImage(floorimg, floor);
             foreach (Wall o in rooms)
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
+                SolidBrush solidBrush = new SolidBrush(
+   Color.FromArgb(200, 200, 200, 200));
                 e.Graphics.DrawRectangle(pen, temp);
+                e.Graphics.FillRectangle(solidBrush, temp);
             }
             foreach (Object o in objs)
             {

@@ -125,5 +125,10 @@ namespace interior.Dialogs
         {
 
         }
+
+        private void btnUsrObj_Click(object sender, EventArgs e)
+        {
+            listType.Items.Add(txtUsrObj.Text);
+        }
     }
 }

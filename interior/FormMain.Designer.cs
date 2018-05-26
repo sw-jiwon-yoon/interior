@@ -40,15 +40,14 @@
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.제작ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblWarn = new System.Windows.Forms.Label();
-            this.panel1 = new interior.DoubleBufferedPanel();
             this.listRoom = new System.Windows.Forms.ListBox();
-            this.btnRoomCreate = new System.Windows.Forms.Button();
             this.btnRoomRemove = new System.Windows.Forms.Button();
             this.btnRoomEdit = new System.Windows.Forms.Button();
             this.btnObjEdit = new System.Windows.Forms.Button();
             this.btnObjRemove = new System.Windows.Forms.Button();
             this.listObj = new System.Windows.Forms.ListBox();
             this.btnMeasure = new System.Windows.Forms.Button();
+            this.panel1 = new interior.DoubleBufferedPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +90,7 @@
             // 새로만들기ToolStripMenuItem
             // 
             this.새로만들기ToolStripMenuItem.Name = "새로만들기ToolStripMenuItem";
-            this.새로만들기ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.새로만들기ToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.새로만들기ToolStripMenuItem.Text = "새로 만들기";
             this.새로만들기ToolStripMenuItem.Click += new System.EventHandler(this.새로만들기ToolStripMenuItem_Click);
             // 
@@ -152,18 +151,21 @@
             this.lblWarn.TabIndex = 0;
             this.lblWarn.Text = "Warning";
             // 
+<<<<<<< HEAD
+=======
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 659);
+            this.panel1.Size = new System.Drawing.Size(820, 660);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
+>>>>>>> 3b16961137cf78472a328db7e85acde7cf2969d1
             // listRoom
             // 
             this.listRoom.FormattingEnabled = true;
@@ -172,15 +174,6 @@
             this.listRoom.Name = "listRoom";
             this.listRoom.Size = new System.Drawing.Size(270, 289);
             this.listRoom.TabIndex = 4;
-            // 
-            // btnRoomCreate
-            // 
-            this.btnRoomCreate.Location = new System.Drawing.Point(841, 113);
-            this.btnRoomCreate.Name = "btnRoomCreate";
-            this.btnRoomCreate.Size = new System.Drawing.Size(80, 41);
-            this.btnRoomCreate.TabIndex = 5;
-            this.btnRoomCreate.Text = "방 추가";
-            this.btnRoomCreate.UseVisualStyleBackColor = true;
             // 
             // btnRoomRemove
             // 
@@ -200,6 +193,7 @@
             this.btnRoomEdit.TabIndex = 7;
             this.btnRoomEdit.Text = "방 편집";
             this.btnRoomEdit.UseVisualStyleBackColor = true;
+            this.btnRoomEdit.Click += new System.EventHandler(this.btnRoomEdit_Click);
             // 
             // btnObjEdit
             // 
@@ -239,6 +233,18 @@
             this.btnMeasure.UseVisualStyleBackColor = true;
             this.btnMeasure.Click += new System.EventHandler(this.btnMeasure_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Location = new System.Drawing.Point(0, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(820, 659);
+            this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -251,7 +257,6 @@
             this.Controls.Add(this.btnObjEdit);
             this.Controls.Add(this.btnRoomEdit);
             this.Controls.Add(this.btnRoomRemove);
-            this.Controls.Add(this.btnRoomCreate);
             this.Controls.Add(this.listRoom);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblWarn);
@@ -284,7 +289,6 @@
         private System.Windows.Forms.Label lblWarn;
         private interior.DoubleBufferedPanel panel1;
         private System.Windows.Forms.ListBox listRoom;
-        private System.Windows.Forms.Button btnRoomCreate;
         private System.Windows.Forms.Button btnRoomRemove;
         private System.Windows.Forms.Button btnRoomEdit;
         private System.Windows.Forms.Button btnObjEdit;

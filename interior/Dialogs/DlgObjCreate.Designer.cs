@@ -41,7 +41,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.txtObjname = new System.Windows.Forms.TextBox();
             this.txtUsrObj = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUsrObj = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listType
@@ -162,21 +162,22 @@
             this.txtUsrObj.Size = new System.Drawing.Size(139, 25);
             this.txtUsrObj.TabIndex = 12;
             // 
-            // button1
+            // btnUsrObj
             // 
-            this.button1.Location = new System.Drawing.Point(44, 195);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "사용자 객체 추가";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnUsrObj.Location = new System.Drawing.Point(44, 195);
+            this.btnUsrObj.Name = "btnUsrObj";
+            this.btnUsrObj.Size = new System.Drawing.Size(139, 23);
+            this.btnUsrObj.TabIndex = 13;
+            this.btnUsrObj.Text = "사용자 객체 추가";
+            this.btnUsrObj.UseVisualStyleBackColor = true;
+            this.btnUsrObj.Click += new System.EventHandler(this.btnUsrObj_Click);
             // 
             // DlgObjCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 230);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnUsrObj);
             this.Controls.Add(this.txtUsrObj);
             this.Controls.Add(this.txtObjname);
             this.Controls.Add(this.lblName);
@@ -212,6 +213,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtObjname;
         private System.Windows.Forms.TextBox txtUsrObj;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUsrObj;
     }
 }

@@ -103,6 +103,7 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Object.cs" />
+    <Compile Include="SerialList.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,9 +142,8 @@
   <ItemGroup>
     <Content Include="Properties\computer.png" />
     <Content Include="Properties\closet.png" />
+    <None Include="Resources\DABeY5-V0AA2sXQ.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
