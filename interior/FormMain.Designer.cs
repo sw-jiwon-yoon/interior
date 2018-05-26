@@ -147,21 +147,9 @@
             this.lblWarn.AutoSize = true;
             this.lblWarn.Location = new System.Drawing.Point(12, 693);
             this.lblWarn.Name = "lblWarn";
-            this.lblWarn.Size = new System.Drawing.Size(60, 15);
+            this.lblWarn.Size = new System.Drawing.Size(157, 15);
             this.lblWarn.TabIndex = 0;
-            this.lblWarn.Text = "Warning";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Window;
-            this.panel1.Location = new System.Drawing.Point(0, 31);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 660);
-            this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            this.lblWarn.Text = "닫힌 공간이 없습니다.";
             // 
             // listRoom
             // 
