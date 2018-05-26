@@ -51,14 +51,7 @@ namespace interior
                 }
                 else
                 {
-                    if (objType == "컴퓨터")
-                    {
-                        objimage = Properties.Resources.computer;
-                    }
-                    else if (objType == "장롱")
-                    {
-                        objimage = Properties.Resources.closet;
-                    }
+
                     x = dlgObjCreate.XGave;
                     y = dlgObjCreate.YGave;
                     z = dlgObjCreate.ZGave;
@@ -194,7 +187,6 @@ namespace interior
             }
         }
 
-        Rectangle destRect;
         Rectangle srcRect;
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
@@ -511,6 +503,14 @@ namespace interior
                     e.Graphics.DrawRectangle(bluePen, temp);
                 else
                 {
+                    if (o.objType == "컴퓨터")
+                    {
+                        objimage = Properties.Resources.computer;
+                    }
+                    else if (o.objType == "장롱")
+                    {
+                        objimage = Properties.Resources.closet;
+                    }
                     temp.Width = o.x;
                     temp.Height = o.y;
                     temp.X = o.locP.X;
