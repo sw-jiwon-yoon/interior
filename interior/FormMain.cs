@@ -138,20 +138,6 @@ namespace interior
             }
             else if(mode == 1) // 객체추가모드
             {
-
-
-                isHold = true;
-               
-                objs.Add(objName, e.Location, 10, 10, 10, objType);
-                listObj.Items.Add(objs.Last().name + " " +e.Location +" " + objs.Last().objType);
-
-                panel1.Refresh();
-
-                isHold = false;                
-
-                mode = 0;
-                
-
                 
             }
             else if (mode == 2)
