@@ -42,7 +42,7 @@ namespace interior
 
                 objType = dlgObjCreate.TypeGave;
                 objName = dlgObjCreate.NameGave;
-                if (objType == "문")
+                if (objType == "문" || objType == "창문")
                 {
 
                 }
@@ -117,7 +117,7 @@ namespace interior
         Pen pen = new Pen(Color.Black);
         Rectangle r = new Rectangle();
         Pen redPen = new Pen(Color.Red);
-        Rectangle door = new Rectangle();
+        Pen bluePen = new Pen(Color.Blue);
         bool isHold = false;
         Walllist rooms = new Walllist();
         Point start, end;
@@ -139,9 +139,6 @@ namespace interior
             else if(mode == 1) // 객체추가모드
             {
                 isHold = false;
-                door.Location = e.Location;
-                door.Width = 10;
-                door.Height = 10;
                 objs.Add(objName, e.Location, 10, 10, 10, objType);
                 listObj.Items.Add(objs.Last().name + " " +e.Location +" " + objs.Last().objType);
 
@@ -297,7 +294,10 @@ namespace interior
             foreach (Object o in objs)
             {
                 Rectangle temp = new Rectangle(o.locP.X, o.locP.Y, 10, 10);
-                e.Graphics.DrawRectangle(redPen, temp);
+                if(o.objType == "문")
+                    e.Graphics.DrawRectangle(redPen, temp);
+                else if(o.objType == "창문")
+                    e.Graphics.DrawRectangle(bluePen, temp);
             }
         }
     }
