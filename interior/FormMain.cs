@@ -24,12 +24,23 @@ namespace interior
         int z;
         string objType;
         string objName;
-        
+        Rectangle floor = new Rectangle(0, 0, 820, 660);
+        Image floorimg = Properties.Resources.floor;
+
+
+
 
         public FrmMain()
         {
             mode = 0; 
             InitializeComponent();
+
+ //           Point p1 = new Point(0, 0);
+//            Point p2 = new Point(500, 500);
+            
+ //           rooms.Add(p1, p2, 10);
+ //           listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
+
         }
 
         Image objimage;
@@ -118,7 +129,7 @@ namespace interior
             }
         }
 
-        Pen pen = new Pen(Color.Black);
+        Pen pen = new Pen(Color.Black, 3.0f);
         Rectangle r = new Rectangle();
         Pen redPen = new Pen(Color.Red);
         Pen bluePen = new Pen(Color.Blue);
@@ -127,6 +138,7 @@ namespace interior
         Point start, end;
         Walllist rooms = new Walllist();
         ObjList objs = new ObjList();
+
 
         void Detecter()
         {
@@ -520,10 +532,14 @@ namespace interior
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.DrawImage(floorimg, floor);
             foreach (Wall o in rooms)
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
+                SolidBrush solidBrush = new SolidBrush(
+   Color.FromArgb(200, 200, 200, 200));
                 e.Graphics.DrawRectangle(pen, temp);
+                e.Graphics.FillRectangle(solidBrush, temp);
             }
             foreach (Object o in objs)
             {

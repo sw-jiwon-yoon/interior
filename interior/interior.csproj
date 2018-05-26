@@ -141,9 +141,8 @@
   <ItemGroup>
     <Content Include="Properties\computer.png" />
     <Content Include="Properties\closet.png" />
+    <None Include="Resources\DABeY5-V0AA2sXQ.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
