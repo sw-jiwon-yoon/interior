@@ -47,7 +47,6 @@
             this.listType.FormattingEnabled = true;
             this.listType.ItemHeight = 15;
             this.listType.Items.AddRange(new object[] {
-            "방",
             "문",
             "창문",
             "객체1",

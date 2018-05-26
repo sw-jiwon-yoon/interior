@@ -78,7 +78,7 @@ namespace interior
         Pen pen = new Pen(Color.Black);
         Rectangle r = new Rectangle();
         bool isHold = false;
-        Objlist rooms = new Objlist();
+        Walllist rooms = new Walllist();
         Point start, end;
 
 
@@ -116,13 +116,24 @@ namespace interior
                 rooms.Add(start, end, 10);
             }
             isHold = false;
+            panel1.Invalidate();
+
+            listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
+
+
             //         panel1.Invalidate();
+
             lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
+        }
+
+        private void btnRoomRemove_Click(object sender, EventArgs e)
+        {
+            listRoom.Items.Remove(listRoom.SelectedItem);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            foreach(Object o in rooms)
+            foreach(Wall o in rooms)
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
                 e.Graphics.DrawRectangle(pen, temp);
