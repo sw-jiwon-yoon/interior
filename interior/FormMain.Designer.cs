@@ -151,6 +151,21 @@
             this.lblWarn.TabIndex = 0;
             this.lblWarn.Text = "Warning";
             // 
+<<<<<<< HEAD
+=======
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Location = new System.Drawing.Point(0, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(820, 660);
+            this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            // 
+>>>>>>> 3b16961137cf78472a328db7e85acde7cf2969d1
             // listRoom
             // 
             this.listRoom.FormattingEnabled = true;
