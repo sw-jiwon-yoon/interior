@@ -36,6 +36,8 @@
             this.txtY = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtZ = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox1
@@ -79,6 +81,7 @@
             this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "세로";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtX
             // 
@@ -93,10 +96,11 @@
             this.txtY.Name = "txtY";
             this.txtY.Size = new System.Drawing.Size(100, 25);
             this.txtY.TabIndex = 5;
+            this.txtY.TextChanged += new System.EventHandler(this.txtY_TextChanged);
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(240, 142);
+            this.btnOk.Location = new System.Drawing.Point(240, 143);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 6;
@@ -106,7 +110,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(323, 142);
+            this.btnCancel.Location = new System.Drawing.Point(323, 143);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -114,11 +118,29 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // txtZ
+            // 
+            this.txtZ.Location = new System.Drawing.Point(298, 112);
+            this.txtZ.Name = "txtZ";
+            this.txtZ.Size = new System.Drawing.Size(100, 25);
+            this.txtZ.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(237, 115);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "높이";
+            // 
             // DlgObjCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 230);
+            this.Controls.Add(this.txtZ);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtY);
@@ -144,5 +166,7 @@
         private System.Windows.Forms.TextBox txtY;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtZ;
+        private System.Windows.Forms.Label label4;
     }
 }
