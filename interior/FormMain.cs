@@ -450,6 +450,7 @@ namespace interior
 
         }
 
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             if (mode == 2)
