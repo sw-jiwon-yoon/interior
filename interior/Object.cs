@@ -13,20 +13,22 @@ namespace interior
         public int y;
         public int z;
         public string name;
+        public string objType;
 
         // public Image texture;
     }
 
     public class ObjList : List<Object>
     {
-        public void Add(string name, int x, int y, int z)
+        public void Add(string name, int x, int y, int z, string objType)
         {
             var data = new Object
             {
                 name = name,
                 x = x,
                 y = y,
-                z = z
+                z = z,
+                objType = objType 
             };
             this.Add(data);
         }

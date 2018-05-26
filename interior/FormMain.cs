@@ -100,11 +100,13 @@ namespace interior
                 int panel1Width = panel1.Size.Width;
                 int panel1Height = panel1.Size.Height;
 
+                //좌표 값이 넘어가게되면 panel의 끝 좌표를 넣어준다.
+
                 int width = e.Location.X - r.Location.X;
                 if (e.Location.X >= panel1Width)
                     width = panel1Width - r.Location.X;
-                int height = e.Location.Y - r.Location.Y;
 
+                int height = e.Location.Y - r.Location.Y;
                 if (e.Location.Y >= panel1Height)
                     height = panel1Height - r.Location.Y;
 
@@ -122,37 +124,41 @@ namespace interior
             //Console.WriteLine(string.Format("args1: {0} args2: {1}", panel1Width, panel1Height));
             end = e.Location;
 
+            //좌표 값이 넘어가게되면 panel의 끝 좌표를 넣어준다.
             int width = end.X - r.Location.X;
+            if (end.X >= panel1Width)
+            {
+                width = panel1Width - r.Location.X;
+                end.X = panel1Width;
+            }
 
             int height = end.Y - r.Location.Y;
+            if (end.Y >= panel1Height)
+            {
+                height = panel1Height - r.Location.Y;
+                end.Y = panel1Height;
+            }
 
-            if (end.X >= panel1Width)
-                {
-                    width = panel1Width - r.Location.X;
-                    end.X = panel1Width;
-                }
+            r.Width = width;
+            r.Height = height;
 
-                if (end.Y >= panel1Height)
-                {
-                    height = panel1Height - r.Location.Y;
-                    end.Y = panel1Height;
-                }
+            isHold = false; // 마우스 클릭 해제
 
-                end = e.Location;
-
+            // 좌에서 우로 그릴 시에만 room과 listRoom에 넣게 해준다.
+            if (start.X < end.X && start.Y < end.Y)
+            {
                 rooms.Add(start, end, 10);
+                listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
 
-            isHold = false;
+
+                //panel1.Invalidate();
+
+                lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
+            }
+
+
             panel1.Invalidate();
-
-            listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
-
-
-            //panel1.Invalidate();
-
-            lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
         }
-
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
             listRoom.Items.Remove(listRoom.SelectedItem);
