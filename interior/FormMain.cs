@@ -624,11 +624,13 @@ namespace interior
                 {
 
                     e.Graphics.DrawRectangle(redPen, temp);
+                    Detecter();
                 }
                 else
                 {
 
                     e.Graphics.DrawRectangle(pen, temp);
+                    Detecter();
                 }
                 e.Graphics.FillRectangle(solidBrush, temp);
             }
