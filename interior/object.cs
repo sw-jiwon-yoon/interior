@@ -11,7 +11,6 @@ namespace interior
     {
         public Point p1;
         public Point p2;
-        public Size s1;
         public int height;
 
         // public Image texture;
@@ -19,13 +18,12 @@ namespace interior
 
     public class Objlist : List<Object>
     {
-        public void Add(Point p1, Point p2, Size s1, int height)
+        public void Add(Point p1, Point p2, int height)
         {
             var data = new Object
             {
                 p1 = p1,
                 p2 = p2,
-                s1 = s1,
                 height = height
             };
             this.Add(data);

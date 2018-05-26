@@ -78,13 +78,15 @@ namespace interior
         Pen pen = new Pen(Color.Black);
         Rectangle r = new Rectangle();
         bool isHold = false;
+        Objlist rooms = new Objlist();
+        Point start, end;
 
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             r.Location = e.Location;
             isHold = true;
-
+            start = e.Location;
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -104,13 +106,15 @@ namespace interior
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
             int width = e.Location.X - r.Location.X;
-            int height = e.Location.X - r.Location.X;
+            int height = e.Location.Y - r.Location.Y;
 
             r.Width = width;
             r.Height = height;
 
+            end = e.Location;
+            rooms.Add(start, end, 10);
             isHold = false;
-            panel1.Invalidate();
+   //         panel1.Invalidate();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
