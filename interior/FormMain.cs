@@ -138,7 +138,7 @@ namespace interior
             }
             else if(mode == 1) // 객체추가모드
             {
-                isHold = false;
+                isHold = true;
                 door.Location = e.Location;
                 door.Width = 10;
                 door.Height = 10;
@@ -146,9 +146,7 @@ namespace interior
                 listObj.Items.Add(objs.Last().name + " " +e.Location +" " + objs.Last().objType);
 
                 panel1.Refresh();
-                mode = 0;
-
-
+                isHold = false;                
             }
             else if (mode == 2)
             {

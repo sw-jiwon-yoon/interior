@@ -40,6 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.txtObjname = new System.Windows.Forms.TextBox();
+            this.txtUsrObj = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listType
@@ -51,16 +53,16 @@
             "창문",
             "객체1",
             "객체2"});
-            this.listType.Location = new System.Drawing.Point(61, 71);
+            this.listType.Location = new System.Drawing.Point(44, 57);
             this.listType.Name = "listType";
-            this.listType.Size = new System.Drawing.Size(139, 109);
+            this.listType.Size = new System.Drawing.Size(139, 94);
             this.listType.TabIndex = 0;
             this.listType.Click += new System.EventHandler(this.listType_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 53);
+            this.label1.Location = new System.Drawing.Point(41, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 15);
             this.label1.TabIndex = 1;
@@ -69,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(237, 91);
+            this.label2.Location = new System.Drawing.Point(237, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 15);
             this.label2.TabIndex = 2;
@@ -78,7 +80,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(237, 121);
+            this.label3.Location = new System.Drawing.Point(237, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 3;
@@ -87,14 +89,14 @@
             // 
             // txtX
             // 
-            this.txtX.Location = new System.Drawing.Point(298, 88);
+            this.txtX.Location = new System.Drawing.Point(298, 67);
             this.txtX.Name = "txtX";
             this.txtX.Size = new System.Drawing.Size(100, 25);
             this.txtX.TabIndex = 4;
             // 
             // txtY
             // 
-            this.txtY.Location = new System.Drawing.Point(298, 118);
+            this.txtY.Location = new System.Drawing.Point(298, 96);
             this.txtY.Name = "txtY";
             this.txtY.Size = new System.Drawing.Size(100, 25);
             this.txtY.TabIndex = 5;
@@ -102,7 +104,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(318, 195);
+            this.btnOk.Location = new System.Drawing.Point(240, 195);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 6;
@@ -112,7 +114,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(399, 195);
+            this.btnCancel.Location = new System.Drawing.Point(323, 195);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -122,7 +124,7 @@
             // 
             // txtZ
             // 
-            this.txtZ.Location = new System.Drawing.Point(298, 148);
+            this.txtZ.Location = new System.Drawing.Point(298, 127);
             this.txtZ.Name = "txtZ";
             this.txtZ.Size = new System.Drawing.Size(100, 25);
             this.txtZ.TabIndex = 9;
@@ -130,7 +132,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(237, 151);
+            this.label4.Location = new System.Drawing.Point(237, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 8;
@@ -139,7 +141,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(237, 53);
+            this.lblName.Location = new System.Drawing.Point(237, 32);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(37, 15);
             this.lblName.TabIndex = 10;
@@ -147,16 +149,34 @@
             // 
             // txtObjname
             // 
-            this.txtObjname.Location = new System.Drawing.Point(298, 50);
+            this.txtObjname.Location = new System.Drawing.Point(298, 29);
             this.txtObjname.Name = "txtObjname";
             this.txtObjname.Size = new System.Drawing.Size(100, 25);
             this.txtObjname.TabIndex = 11;
+            // 
+            // txtUsrObj
+            // 
+            this.txtUsrObj.Location = new System.Drawing.Point(44, 164);
+            this.txtUsrObj.Name = "txtUsrObj";
+            this.txtUsrObj.Size = new System.Drawing.Size(139, 25);
+            this.txtUsrObj.TabIndex = 12;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(44, 195);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(139, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "사용자 객체 추가";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // DlgObjCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 230);
+            this.ClientSize = new System.Drawing.Size(450, 230);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtUsrObj);
             this.Controls.Add(this.txtObjname);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtZ);
@@ -190,5 +210,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtObjname;
+        private System.Windows.Forms.TextBox txtUsrObj;
+        private System.Windows.Forms.Button button1;
     }
 }
