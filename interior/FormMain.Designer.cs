@@ -44,9 +44,9 @@
             this.listRoom = new System.Windows.Forms.ListBox();
             this.btnRoomCreate = new System.Windows.Forms.Button();
             this.btnRoomRemove = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnRoomEdit = new System.Windows.Forms.Button();
+            this.btnObjEdit = new System.Windows.Forms.Button();
+            this.btnObjRemove = new System.Windows.Forms.Button();
             this.listObj = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -189,32 +189,32 @@
             this.btnRoomRemove.UseVisualStyleBackColor = true;
             this.btnRoomRemove.Click += new System.EventHandler(this.btnRoomRemove_Click);
             // 
-            // button1
+            // btnRoomEdit
             // 
-            this.button1.Location = new System.Drawing.Point(936, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 41);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "방 편집";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRoomEdit.Location = new System.Drawing.Point(936, 113);
+            this.btnRoomEdit.Name = "btnRoomEdit";
+            this.btnRoomEdit.Size = new System.Drawing.Size(80, 41);
+            this.btnRoomEdit.TabIndex = 7;
+            this.btnRoomEdit.Text = "방 편집";
+            this.btnRoomEdit.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnObjEdit
             // 
-            this.button2.Location = new System.Drawing.Point(1224, 113);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 41);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "객체 편집";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnObjEdit.Location = new System.Drawing.Point(1224, 113);
+            this.btnObjEdit.Name = "btnObjEdit";
+            this.btnObjEdit.Size = new System.Drawing.Size(80, 41);
+            this.btnObjEdit.TabIndex = 8;
+            this.btnObjEdit.Text = "객체 편집";
+            this.btnObjEdit.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnObjRemove
             // 
-            this.button3.Location = new System.Drawing.Point(1317, 113);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 41);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "객체 삭제";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnObjRemove.Location = new System.Drawing.Point(1317, 113);
+            this.btnObjRemove.Name = "btnObjRemove";
+            this.btnObjRemove.Size = new System.Drawing.Size(80, 41);
+            this.btnObjRemove.TabIndex = 9;
+            this.btnObjRemove.Text = "객체 삭제";
+            this.btnObjRemove.UseVisualStyleBackColor = true;
             // 
             // listObj
             // 
@@ -232,9 +232,9 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1407, 717);
             this.Controls.Add(this.listObj);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnObjRemove);
+            this.Controls.Add(this.btnObjEdit);
+            this.Controls.Add(this.btnRoomEdit);
             this.Controls.Add(this.btnRoomRemove);
             this.Controls.Add(this.btnRoomCreate);
             this.Controls.Add(this.listRoom);
@@ -270,9 +270,9 @@
         private System.Windows.Forms.ListBox listRoom;
         private System.Windows.Forms.Button btnRoomCreate;
         private System.Windows.Forms.Button btnRoomRemove;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnRoomEdit;
+        private System.Windows.Forms.Button btnObjEdit;
+        private System.Windows.Forms.Button btnObjRemove;
         private System.Windows.Forms.ListBox listObj;
     }
 }
