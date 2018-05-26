@@ -48,14 +48,8 @@ namespace interior
                     Bitmap bm = new Bitmap(width, height);
                     panel1.DrawToBitmap(bm, new Rectangle(0, 0, width, height));
                     bm.Save(sfd.FileName);
-                }
-
-                
-            }
-
-
-
-            ;
+                }   
+            };
         }
 
         private void 끝내기ToolStripMenuItem_Click(object sender, EventArgs e)
