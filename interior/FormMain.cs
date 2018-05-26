@@ -234,6 +234,7 @@ namespace interior
                     // 닫힌 공간 해주세요
                     flag = true;
                     break;
+
                 }
             }
         }
