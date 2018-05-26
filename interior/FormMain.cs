@@ -627,7 +627,6 @@ namespace interior
                 }
                 else
                 {
-
                     e.Graphics.DrawRectangle(pen, temp);
                 }
                 e.Graphics.FillRectangle(solidBrush, temp);
