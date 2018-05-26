@@ -234,7 +234,6 @@ namespace interior
                 {
                     // 닫힌 공간 해주세요
                     flag = true;
-<<<<<<< HEAD
                     blocked_list.Add(i); // 닫힌 공간 담은 list
 
                     lblWarn.Text = "닫힌 공간이 존재합니다.";
@@ -242,9 +241,6 @@ namespace interior
                 else
                 {
                     lblWarn.Text = "닫힌 공간이 없습니다.";
-=======
-                    blocked_list.Add(i);    // 닫힌 공간(방) 담은 list
->>>>>>> 3399ce43cfc92ac765298287caedd11bfb6c4374
                 }
             }
         }
