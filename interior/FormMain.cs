@@ -24,7 +24,9 @@ namespace interior
         int z;
         string objType;
         string objName;
-        
+        Image objimage;
+
+        string Filename;
 
         public FrmMain()
         {
@@ -42,12 +44,21 @@ namespace interior
 
                 objType = dlgObjCreate.TypeGave;
                 objName = dlgObjCreate.NameGave;
+
                 if (objType == "문" || objType == "창문")
                 {
 
                 }
                 else
                 {
+                    if(objType == "컴퓨터")
+                    {
+                        objimage = Properties.Resources.computer;
+                    }
+                    else if(objType == "장롱")
+                    {
+                        objimage = Properties.Resources.closet;
+                    }
                     x = dlgObjCreate.XGave;
                     y = dlgObjCreate.YGave;
                     z = dlgObjCreate.ZGave;
@@ -183,6 +194,9 @@ namespace interior
             }
         }
 
+        Rectangle destRect;
+        Rectangle srcRect;
+
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
             if (mode == 0)
@@ -256,7 +270,16 @@ namespace interior
 
                 isHold = false;
 
-                objs.Add(objName, e.Location, 10, 10, 10, objType);
+                if (objName == "창문" || objName == "문")
+                {
+                    objs.Add(objName, e.Location, 10, 10, 10, objType);
+                }
+                else
+                {
+           //         destRect = new Rectangle(e.Location.X, e.Location.Y, 50, 50); // Create rectangle for displaying image.
+                    srcRect = new Rectangle(e.Location.X, e.Location.Y, x, y); // Create rectangle for source image.
+                    objs.Add(objName, e.Location, x, y, z, objType);
+                }
                 listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
 
                 panel1.Refresh();
@@ -266,14 +289,20 @@ namespace interior
             else if (mode == 2)
             {
                 end = e.Location;
+                isHold = false;
                 panel1.Refresh();
                 double distance = Math.Sqrt((double)((start.X - end.X) * (start.X - end.X) + (start.Y - end.Y) * (start.Y - end.Y)));
                 MessageBox.Show(string.Format("길이 : {0,0:F2}", distance));
                 mode = 0;
-                isHold = false;
+
             }
             
         }
+
+
+
+
+
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
             if (listRoom.SelectedIndex >= 0)
@@ -332,10 +361,12 @@ namespace interior
             foreach (Object o in objs)
             {
                 Rectangle temp = new Rectangle(o.locP.X, o.locP.Y, 10, 10);
-                if(o.objType == "문")
+                if (o.objType == "문")
                     e.Graphics.DrawRectangle(redPen, temp);
-                else if(o.objType == "창문")
+                else if (o.objType == "창문")
                     e.Graphics.DrawRectangle(bluePen, temp);
+                else
+                    e.Graphics.DrawImage(objimage, srcRect);
             }
         }
     }

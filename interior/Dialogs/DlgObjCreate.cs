@@ -31,7 +31,7 @@ namespace interior.Dialogs
         }
 
         public int XGave
-        {
+        { //가로
             get
             {
                 return int.Parse(txtX.Text);
@@ -40,7 +40,7 @@ namespace interior.Dialogs
         }
 
         public int YGave
-        {
+        { //세로
             get
             {
                 return int.Parse(txtY.Text);
@@ -49,7 +49,7 @@ namespace interior.Dialogs
         }
 
         public int ZGave
-        {
+        { //높이
             get
             {
                 return int.Parse(txtZ.Text);

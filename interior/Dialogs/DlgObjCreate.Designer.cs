@@ -51,8 +51,8 @@
             this.listType.Items.AddRange(new object[] {
             "문",
             "창문",
-            "객체1",
-            "객체2"});
+            "컴퓨터",
+            "장롱"});
             this.listType.Location = new System.Drawing.Point(44, 57);
             this.listType.Name = "listType";
             this.listType.Size = new System.Drawing.Size(139, 94);
