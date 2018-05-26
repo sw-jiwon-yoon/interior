@@ -454,6 +454,8 @@ namespace interior
         {
             rooms.Clear();
             listRoom.Items.Clear();
+            objs.Clear();
+            listObj.Items.Clear();
             panel1.Refresh();
         }
 
