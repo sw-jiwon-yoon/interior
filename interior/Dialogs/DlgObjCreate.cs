@@ -25,7 +25,10 @@ namespace interior.Dialogs
         {
             get
             {
-                return txtObjname.Text; 
+                if (txtObjname.Text == "문" || txtObjname.Text == "창문" || txtObjname.Text == "컴퓨터" || txtObjname.Text == "장롱")
+                    return txtObjname.Text;
+                else
+                    return "userObj";
             }
 
         }
@@ -117,6 +120,15 @@ namespace interior.Dialogs
             }
         }
 
+        public string NameUserGaves
+        {
+            get
+            {
+                return txtUsrObj.Text;
+            }
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
         }
@@ -128,7 +140,14 @@ namespace interior.Dialogs
 
         private void btnUsrObj_Click(object sender, EventArgs e)
         {
+            
             listType.Items.Add(txtUsrObj.Text);
+            txtUsrObj.Text = "";
+        }
+
+        private void txtUsrObj_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
