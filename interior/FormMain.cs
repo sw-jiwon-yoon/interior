@@ -117,13 +117,16 @@ namespace interior
             }
             isHold = false;
             //         panel1.Invalidate();
-
             lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(pen, r);
+            foreach(Object o in rooms)
+            {
+                Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
+                e.Graphics.DrawRectangle(pen, temp);
+            }
         }
     }
 }
