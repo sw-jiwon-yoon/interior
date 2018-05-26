@@ -81,9 +81,11 @@ namespace interior
         Objlist rooms = new Objlist();
         Point start, end;
 
-
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
+            int panel1Width = panel1.Size.Width;
+            int panel1Height = panel1.Size.Height;
+
             r.Location = e.Location;
             isHold = true;
             start = e.Location;
@@ -93,8 +95,15 @@ namespace interior
         {
             if (isHold)
             {
+                int panel1Width = panel1.Size.Width;
+                int panel1Height = panel1.Size.Height;
+
                 int width = e.Location.X - r.Location.X;
+                if (e.Location.X >= panel1Width)
+                    width = panel1Width - r.Location.X;
                 int height = e.Location.Y - r.Location.Y;
+                if (e.Location.Y >= panel1Height)
+                    height = panel1Height - r.Location.Y;
 
                 r.Width = width;
                 r.Height = height;
@@ -105,16 +114,33 @@ namespace interior
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            int width = e.Location.X - r.Location.X;
-            int height = e.Location.Y - r.Location.Y;
+            int panel1Width = panel1.Size.Width;
+            int panel1Height = panel1.Size.Height;
+            //Console.WriteLine(string.Format("args1: {0} args2: {1}", panel1Width, panel1Height));
+            end = e.Location;
+
+            int width = end.X - r.Location.X;
+            if (end.X >= panel1Width)
+            {
+                width = panel1Width - r.Location.X;
+                end.X = panel1Width;
+            }
+                
+            int height = end.Y - r.Location.Y;
+            if (end.Y >= panel1Height)
+            {
+                height = panel1Height - r.Location.Y;
+                end.Y = panel1Height;
+            }
 
             r.Width = width;
             r.Height = height;
 
-            end = e.Location;
+            //Console.WriteLine(string.Format("args1: {0} args2: {1}", end.X, end.Y));
+
             rooms.Add(start, end, 10);
             isHold = false;
-   //         panel1.Invalidate();
+            //panel1.Invalidate();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
