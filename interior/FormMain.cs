@@ -147,7 +147,7 @@ namespace interior
 
                 panel1.Refresh();
                 mode = 0;
-
+                
 
             }
             else if (mode == 2)
@@ -227,7 +227,7 @@ namespace interior
                         }
                         else  // 충돌이 일어날 경우
                         {
-                            if(((o.p1.X<start.X)&&(o.p1.Y<start.Y)&&(o.p2.X>end.X)&&(o.p2.Y>end.Y))||((o.p1.X>start.X)&&(o.p1.Y>start.Y)&&(o.p2.X<end.X)&&(o.p2.Y<end.Y))) // 방을 품는 좌표일 시, 충돌이 없다.
+                            if (((o.p1.X < start.X) && (o.p1.Y < start.Y) && (o.p2.X > end.X) && (o.p2.Y > end.Y)) || ((o.p1.X > start.X) && (o.p1.Y > start.Y) && (o.p2.X < end.X) && (o.p2.Y < end.Y))) // 방을 품는 좌표일 시, 충돌이 없다.
                             {
                                 continue;
                             }
@@ -235,17 +235,23 @@ namespace interior
                             break;
                         }
                     }
+
+                    /*
+                     다른 객체와 충돌이 일어나는 지, 여기서 확인하면 된다!!!!!!!!
+                    */
+
                     if (!conflict_chk)  // 충돌이 없어야 rooms에 넣는다.
                     {
                         rooms.Add(start, end, 10);
                         listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
                         lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
                     }
-                
-                }    
+
+                }
                 panel1.Invalidate();
-                
+
             }
+            else if (mode == 1) ;
             else if (mode == 2)
             {
                 end = e.Location;
