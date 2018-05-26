@@ -232,17 +232,19 @@ namespace interior
             {
                 if (!visited[i])
                 {
-                    // 닫힌 공간 해주세요
                     flag = true;
-                    blocked_list.Add(i); // 닫힌 공간 담은 list
+                    blocked_list.Add(i-objcnt); // 닫힌 공간 담은 list
 
                     lblWarn.Text = "닫힌 공간이 존재합니다.";
                 }
+                /*
                 else
                 {
                     lblWarn.Text = "닫힌 공간이 없습니다.";
-                }
+                }*/
             }
+            if(!flag)
+                lblWarn.Text = "닫힌 공간이 없습니다.";
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
