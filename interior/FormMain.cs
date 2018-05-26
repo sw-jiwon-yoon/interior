@@ -238,11 +238,9 @@ namespace interior
 
                     lblWarn.Text = "닫힌 공간이 존재합니다.";
                 }
-                else
-                {
-                    lblWarn.Text = "닫힌 공간이 없습니다.";
-                }
+
             }
+            if(flag == false) lblWarn.Text = "닫힌 공간이 없습니다.";
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -364,7 +362,7 @@ namespace interior
 
                 }
 
-                Detecter();
+                
                 panel1.Invalidate();
 
             }
@@ -554,7 +552,7 @@ namespace interior
                 mode = 0;
                 isHold = false;
             }
-            
+            Detecter();
         }
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {

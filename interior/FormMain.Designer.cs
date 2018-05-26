@@ -147,9 +147,9 @@
             this.lblWarn.AutoSize = true;
             this.lblWarn.Location = new System.Drawing.Point(12, 693);
             this.lblWarn.Name = "lblWarn";
-            this.lblWarn.Size = new System.Drawing.Size(60, 15);
+            this.lblWarn.Size = new System.Drawing.Size(157, 15);
             this.lblWarn.TabIndex = 0;
-            this.lblWarn.Text = "Warning";
+            this.lblWarn.Text = "닫힌 공간이 없습니다.";
             // 
             // listRoom
             // 
