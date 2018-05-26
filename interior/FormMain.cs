@@ -178,7 +178,7 @@ namespace interior
                     bool conflict_chk = false;
                     foreach (Wall o in rooms)
                     {
-                    
+
                         if ((o.p2.X <= start.X) || (end.X <= o.p1.X) || (o.p2.Y <= start.Y) || (end.Y <= o.p1.Y))   // 만족하면 충돌이 없다.
                         {
                             continue;
