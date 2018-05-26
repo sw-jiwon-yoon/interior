@@ -128,7 +128,39 @@ namespace interior
         Point start, end;
         ObjList objs = new ObjList();
 
-        
+        void Detecter()
+        {
+            int roomcnt = rooms.Count;
+            int objcnt = 0;
+            for (int i = 0; i < objs.Count; i++)
+            {
+                if (objs[i].objType == "문" || objs[i].objType == "창문")
+                {
+                    objcnt++;
+                }
+            }
+            int[,] Arydetect = new int[roomcnt + objcnt, roomcnt + objcnt];
+
+            for (int i = 0; i < objcnt; i++)
+            {
+                if (objs[i].objType == "문" || objs[i].objType == "창문")
+                {
+                    for (int j = 0; j < roomcnt++; j++)
+                    {
+                        if (objs[i].locP.X < rooms[j].p2.X + 12 && objs[i].locP.X > rooms[j].p1.X - 12 && objs[i].locP.Y > rooms[j].p2.Y - 12 && objs[i].locP.Y < rooms[j].p1.Y + 12)
+                        {
+                            Arydetect[i, objcnt + j] = 1;
+                            Arydetect[objcnt + j, i] = 1;
+                        }
+                        else
+                        {
+                            Arydetect[i, objcnt + j] = 0;
+                            Arydetect[objcnt + j, i] = 0;
+                        }
+                    }
+                }
+            }
+        }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
