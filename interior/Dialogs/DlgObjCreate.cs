@@ -54,13 +54,20 @@ namespace interior.Dialogs
             {
                 return int.Parse(txtZ.Text);
             }
-
         }
-
 
         public DlgObjCreate()
         {
             InitializeComponent();
+            lblName.Visible = false;
+            txtObjname.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            label4.Visible = false;
+            txtX.Visible = false;
+            txtY.Visible = false;
+            txtZ.Visible = false;
+            listType.SetSelected(0, true);
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -88,6 +95,8 @@ namespace interior.Dialogs
         {
             if(listType.SelectedIndex == 0 || listType.SelectedIndex == 1)
             {
+                lblName.Visible = false;
+                txtObjname.Visible = false;
                 label2.Visible = false;
                 label3.Visible = false;
                 label4.Visible = false;
@@ -97,6 +106,8 @@ namespace interior.Dialogs
             }
             else
             {
+                lblName.Visible = true;
+                txtObjname.Visible = true;
                 label2.Visible = true;
                 label3.Visible = true;
                 label4.Visible = true;
@@ -108,6 +119,11 @@ namespace interior.Dialogs
 
         private void button1_Click(object sender, EventArgs e)
         {
+        }
+
+        private void listType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
