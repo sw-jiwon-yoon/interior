@@ -43,8 +43,19 @@ namespace interior
                 sfd.Filter = "BMP-Files|*.bmp";
                 if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    int width = panel1.Size.Width;
+                    int height = panel1.Size.Height;
+                    Bitmap bm = new Bitmap(width, height);
+                    panel1.DrawToBitmap(bm, new Rectangle(0, 0, width, height));
+                    bm.Save(sfd.FileName);
                 }
+
+                
             }
+
+
+
+            ;
         }
 
         private void 끝내기ToolStripMenuItem_Click(object sender, EventArgs e)
