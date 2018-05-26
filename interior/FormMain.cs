@@ -42,7 +42,7 @@ namespace interior
 
                 objType = dlgObjCreate.TypeGave;
                 objName = dlgObjCreate.NameGave;
-                if (objType == "문")
+                if (objType == "문" || objType == "창문")
                 {
 
                 }
@@ -117,7 +117,7 @@ namespace interior
         Pen pen = new Pen(Color.Black);
         Rectangle r = new Rectangle();
         Pen redPen = new Pen(Color.Red);
-        Rectangle door = new Rectangle();
+        Pen bluePen = new Pen(Color.Blue);
         bool isHold = false;
         Walllist rooms = new Walllist();
         Point start, end;
@@ -138,15 +138,25 @@ namespace interior
             }
             else if(mode == 1) // 객체추가모드
             {
+<<<<<<< HEAD
                 isHold = true;
                 door.Location = e.Location;
                 door.Width = 10;
                 door.Height = 10;
+=======
+                isHold = false;
+>>>>>>> cf6a93fe355d1c9a3f34cbe4d38a56c6baa7c26f
                 objs.Add(objName, e.Location, 10, 10, 10, objType);
                 listObj.Items.Add(objs.Last().name + " " +e.Location +" " + objs.Last().objType);
 
                 panel1.Refresh();
+<<<<<<< HEAD
                 isHold = false;                
+=======
+                mode = 0;
+                
+
+>>>>>>> cf6a93fe355d1c9a3f34cbe4d38a56c6baa7c26f
             }
             else if (mode == 2)
             {
@@ -225,7 +235,7 @@ namespace interior
                         }
                         else  // 충돌이 일어날 경우
                         {
-                            if(((o.p1.X<start.X)&&(o.p1.Y<start.Y)&&(o.p2.X>end.X)&&(o.p2.Y>end.Y))||((o.p1.X>start.X)&&(o.p1.Y>start.Y)&&(o.p2.X<end.X)&&(o.p2.Y<end.Y))) // 방을 품는 좌표일 시, 충돌이 없다.
+                            if (((o.p1.X < start.X) && (o.p1.Y < start.Y) && (o.p2.X > end.X) && (o.p2.Y > end.Y)) || ((o.p1.X > start.X) && (o.p1.Y > start.Y) && (o.p2.X < end.X) && (o.p2.Y < end.Y))) // 방을 품는 좌표일 시, 충돌이 없다.
                             {
                                 continue;
                             }
@@ -233,17 +243,23 @@ namespace interior
                             break;
                         }
                     }
+
+                    /*
+                     다른 객체와 충돌이 일어나는 지, 여기서 확인하면 된다!!!!!!!!
+                    */
+
                     if (!conflict_chk)  // 충돌이 없어야 rooms에 넣는다.
                     {
                         rooms.Add(start, end, 10);
                         listRoom.Items.Add(rooms.LongCount() + " : (" + rooms.Last().p1.X + " " + rooms.Last().p1.Y + ") , (" + rooms.Last().p2.X + " " + rooms.Last().p2.Y + ") " + rooms.Last().height);
                         lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
                     }
-                
-                }    
+
+                }
                 panel1.Invalidate();
-                
+
             }
+            else if (mode == 1) ;
             else if (mode == 2)
             {
                 end = e.Location;
@@ -289,7 +305,10 @@ namespace interior
             foreach (Object o in objs)
             {
                 Rectangle temp = new Rectangle(o.locP.X, o.locP.Y, 10, 10);
-                e.Graphics.DrawRectangle(redPen, temp);
+                if(o.objType == "문")
+                    e.Graphics.DrawRectangle(redPen, temp);
+                else if(o.objType == "창문")
+                    e.Graphics.DrawRectangle(bluePen, temp);
             }
         }
     }
