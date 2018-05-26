@@ -235,7 +235,7 @@ namespace interior
                 {
                     // 닫힌 공간 해주세요
                     flag = true;
-                    blocked_list.Add(i);    // 닫힌 공간 담은 list
+                    blocked_list.Add(i);    // 닫힌 공간(방) 담은 list
                 }
             }
         }
