@@ -53,7 +53,7 @@ namespace interior
 
             if(dlgObjCreate.DialogResult == DialogResult.OK)
             {
-
+                
                 objType = dlgObjCreate.TypeGave;
                 objName = dlgObjCreate.NameGave;
                 if (objType == "문" || objType == "창문")
@@ -62,7 +62,6 @@ namespace interior
                 }
                 else
                 {
-
                     x = dlgObjCreate.XGave;
                     y = dlgObjCreate.YGave;
                     z = dlgObjCreate.ZGave;
@@ -615,9 +614,9 @@ namespace interior
             {
                 Rectangle temp = new Rectangle(o.locP.X, o.locP.Y, 10, 10);
                 if (o.objType == "문")
-                    e.Graphics.DrawRectangle(redPen, temp);
+                    e.Graphics.FillRectangle(new SolidBrush(Color.Green), temp);
                 else if (o.objType == "창문")
-                    e.Graphics.DrawRectangle(bluePen, temp);
+                    e.Graphics.FillRectangle(new SolidBrush(Color.Blue), temp);
                 else
                 {
                     if (o.objType == "컴퓨터")
