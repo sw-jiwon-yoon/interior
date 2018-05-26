@@ -65,15 +65,19 @@ namespace interior
 
         private void 저장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SerialList sl = new SerialList();
+            sl.wl = rooms;
+            sl.ol = objs;
+
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "XML-Files|*.xml";
                 if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Wall>));
+                    XmlSerializer serializer = new XmlSerializer(typeof(SerialList));
                     using (StreamWriter sw = new StreamWriter(Path.GetFullPath(sfd.FileName)))
                     {
-                        serializer.Serialize(sw, rooms);
+                        serializer.Serialize(sw, sl);
                     }
                 }
             }
@@ -113,7 +117,14 @@ namespace interior
                 ofd.Filter = "XML-Files|*.xml";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    XmlSerializer deserializer = new XmlSerializer(typeof(SerialList));
+                    using (StreamReader sr = new StreamReader(Path.GetFullPath(ofd.FileName)))
+                    {
+                        SerialList sl = (SerialList)deserializer.Deserialize(sr);
 
+                        rooms = sl.wl;
+                        objs = sl.ol;
+                    }
                 }
             }
         }
