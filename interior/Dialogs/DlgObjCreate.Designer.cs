@@ -161,6 +161,7 @@
             this.txtUsrObj.Name = "txtUsrObj";
             this.txtUsrObj.Size = new System.Drawing.Size(139, 25);
             this.txtUsrObj.TabIndex = 12;
+            this.txtUsrObj.TextChanged += new System.EventHandler(this.txtUsrObj_TextChanged);
             // 
             // btnUsrObj
             // 

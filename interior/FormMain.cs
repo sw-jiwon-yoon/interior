@@ -639,7 +639,7 @@ namespace interior
                     e.Graphics.FillRectangle(new SolidBrush(Color.Green), temp);
                 else if (o.objType == "창문")
                     e.Graphics.FillRectangle(new SolidBrush(Color.Blue), temp);
-                else
+                else if(o.objType == "컴퓨터" || o.objType =="장롱")
                 {
                     if (o.objType == "컴퓨터")
                     {
@@ -657,6 +657,18 @@ namespace interior
                     SolidBrush drawBrush = new SolidBrush(Color.Black);
                     Rectangle drawRect = new Rectangle(temp.X, temp.Y+o.y, o.x, o.y);
                     e.Graphics.DrawImage(objimage, temp);
+                    e.Graphics.DrawString(o.name, drawFont, drawBrush, drawRect);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.Purple), temp);
+                    temp.Width = o.x;
+                    temp.Height = o.y;
+                    temp.X = o.locP.X;
+                    temp.Y = o.locP.Y;
+                    Font drawFont = new Font("Arial", 10, FontStyle.Bold);
+                    SolidBrush drawBrush = new SolidBrush(Color.Black);
+                    Rectangle drawRect = new Rectangle(temp.X, temp.Y + o.y, o.x, o.y);
                     e.Graphics.DrawString(o.name, drawFont, drawBrush, drawRect);
                 }
             }
