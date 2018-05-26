@@ -124,6 +124,17 @@ namespace interior
 
                         rooms = sl.wl;
                         objs = sl.ol;
+
+                        for(int i=0; i<rooms.Count; i++)
+                        {
+                            listRoom.Items.Add(rooms.LongCount() + " : (" + rooms[i].p1.X + " " + rooms[i].p1.Y + ") , (" + rooms[i].p2.X + " " + rooms[i].p2.Y + ") " + rooms[i].height);
+                        }
+
+                        for (int i = 0; i < objs.Count; i++)
+                        {
+                            listObj.Items.Add(objs[i].name + " " + objs[i].locP + " " + objs[i].objType);
+                        }
+
                     }
                 }
             }
@@ -528,6 +539,10 @@ namespace interior
 
         }
 
+        private void btnRoomEdit_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
