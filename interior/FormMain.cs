@@ -138,25 +138,20 @@ namespace interior
             }
             else if(mode == 1) // 객체추가모드
             {
-<<<<<<< HEAD
+
                 isHold = true;
-                door.Location = e.Location;
-                door.Width = 10;
-                door.Height = 10;
-=======
-                isHold = false;
->>>>>>> cf6a93fe355d1c9a3f34cbe4d38a56c6baa7c26f
+               
                 objs.Add(objName, e.Location, 10, 10, 10, objType);
                 listObj.Items.Add(objs.Last().name + " " +e.Location +" " + objs.Last().objType);
 
                 panel1.Refresh();
-<<<<<<< HEAD
+
                 isHold = false;                
-=======
+
                 mode = 0;
                 
 
->>>>>>> cf6a93fe355d1c9a3f34cbe4d38a56c6baa7c26f
+
             }
             else if (mode == 2)
             {
