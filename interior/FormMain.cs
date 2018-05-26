@@ -43,6 +43,7 @@ namespace interior
                 sfd.Filter = "JPG-Files|*.jpg";
                 if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+
                 }
             }
         }
@@ -56,6 +57,18 @@ namespace interior
         {
             FormAbout frmAbout = new FormAbout();
             frmAbout.ShowDialog();
+        }
+
+        private void 열기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "XML-Files|*.xml";
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    
+                }
+            }
         }
     }
 }

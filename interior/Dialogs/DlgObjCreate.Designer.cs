@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listType = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,20 +40,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listType
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Items.AddRange(new object[] {
+            this.listType.FormattingEnabled = true;
+            this.listType.ItemHeight = 15;
+            this.listType.Items.AddRange(new object[] {
             "방",
             "문",
             "창문",
             "객체1",
             "객체2"});
-            this.listBox1.Location = new System.Drawing.Point(61, 71);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 94);
-            this.listBox1.TabIndex = 0;
+            this.listType.Location = new System.Drawing.Point(61, 71);
+            this.listType.Name = "listType";
+            this.listType.Size = new System.Drawing.Size(120, 94);
+            this.listType.TabIndex = 0;
+            this.listType.Click += new System.EventHandler(this.listType_Click);
             // 
             // label1
             // 
@@ -100,7 +101,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(240, 143);
+            this.btnOk.Location = new System.Drawing.Point(240, 145);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 6;
@@ -110,7 +111,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(323, 143);
+            this.btnCancel.Location = new System.Drawing.Point(323, 145);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -148,7 +149,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listType);
             this.Name = "DlgObjCreate";
             this.Text = "객체 추가";
             this.ResumeLayout(false);
@@ -158,7 +159,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

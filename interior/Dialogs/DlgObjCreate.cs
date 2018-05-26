@@ -36,5 +36,27 @@ namespace interior.Dialogs
         {
 
         }
+
+        private void listType_Click(object sender, EventArgs e)
+        {
+            if(listType.SelectedIndex == 0 || listType.SelectedIndex == 1)
+            {
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+                txtX.Visible = false;
+                txtY.Visible = false;
+                txtZ.Visible = false;
+            }
+            else
+            {
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                txtX.Visible = true;
+                txtY.Visible = true;
+                txtZ.Visible = true;
+            }
+        }
     }
 }

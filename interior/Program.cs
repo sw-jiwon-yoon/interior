@@ -20,9 +20,6 @@ namespace interior
             Application.Run(new FrmMain());
 
             
-
-
-            
         }
     }
 }
