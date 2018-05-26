@@ -258,138 +258,143 @@ namespace interior
                 // 마그네틱을 이용해서 문과 창문을 가까운 벽에 붙여준다.(창문과 문의 크기는 무시한다)
                 // 맨하튼 거리를 사용해서 거리를 측정한다.
                 // 모두 50보다 멀면 생성되지 않는다.
-               
-                Point nearest_coordinate = new Point();
-                int nearest_dist=1000000;
-                int temp_dist;
-                foreach (Wall o in rooms)
+                if (objType == "문" || objType == "창문")
                 {
-                    if (e.Location.Y <= o.p1.Y)
+                    Point nearest_coordinate = new Point();
+                    int nearest_dist = 1000000;
+                    int temp_dist;
+                    foreach (Wall o in rooms)
                     {
-                        if(e.Location.X<=o.p1.X)
+                        if (e.Location.Y <= o.p1.Y)
                         {
-                            temp_dist = Math.Abs(o.p1.X - e.Location.X) + Math.Abs(o.p1.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
+                            if (e.Location.X <= o.p1.X)
                             {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p1.X;
-                                nearest_coordinate.Y = o.p1.Y;
+                                temp_dist = Math.Abs(o.p1.X - e.Location.X) + Math.Abs(o.p1.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p1.X;
+                                    nearest_coordinate.Y = o.p1.Y;
+                                }
+                            }
+                            else if (e.Location.X <= o.p2.X)
+                            {
+                                temp_dist = Math.Abs(o.p1.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = e.Location.X;
+                                    nearest_coordinate.Y = o.p1.Y;
+                                }
+                            }
+                            else
+                            {
+                                temp_dist = Math.Abs(o.p2.X - e.Location.X) + Math.Abs(o.p1.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p2.X;
+                                    nearest_coordinate.Y = o.p1.Y;
+                                }
                             }
                         }
-                        else if (e.Location.X <= o.p2.X)
+                        else if (e.Location.Y <= o.p2.Y)
                         {
-                            temp_dist = Math.Abs(o.p1.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
+                            if (e.Location.X <= o.p1.X)
                             {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = e.Location.X;
-                                nearest_coordinate.Y = o.p1.Y;
+                                temp_dist = Math.Abs(o.p1.X - e.Location.X);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p1.X;
+                                    nearest_coordinate.Y = e.Location.Y;
+                                }
+                            }
+                            else if (e.Location.X <= o.p2.X)
+                            {
+                                temp_dist = Math.Abs(o.p1.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = e.Location.X;
+                                    nearest_coordinate.Y = o.p1.Y;
+                                }
+                                temp_dist = Math.Abs(o.p2.X - e.Location.X);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p2.X;
+                                    nearest_coordinate.Y = e.Location.Y;
+                                }
+                                temp_dist = Math.Abs(o.p2.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = e.Location.X;
+                                    nearest_coordinate.Y = o.p2.Y;
+                                }
+                                temp_dist = Math.Abs(o.p1.X - e.Location.X);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p1.X;
+                                    nearest_coordinate.Y = e.Location.Y;
+                                }
+                            }
+                            else
+                            {
+                                temp_dist = Math.Abs(o.p2.X - e.Location.X);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p2.X;
+                                    nearest_coordinate.Y = e.Location.Y;
+                                }
                             }
                         }
                         else
                         {
-                            temp_dist = Math.Abs(o.p2.X - e.Location.X) + Math.Abs(o.p1.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
+                            if (e.Location.X <= o.p1.X)
                             {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p2.X;
-                                nearest_coordinate.Y = o.p1.Y;
+                                temp_dist = Math.Abs(o.p1.X - e.Location.X) + Math.Abs(o.p2.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p1.X;
+                                    nearest_coordinate.Y = o.p2.Y;
+                                }
                             }
-                        }
-                    }   
-                    else if(e.Location.Y <= o.p2.Y)
-                    {
-                        if (e.Location.X <= o.p1.X)
-                        {
-                            temp_dist = Math.Abs(o.p1.X - e.Location.X);
-                            if (nearest_dist >= temp_dist)
+                            else if (e.Location.X <= o.p2.X)
                             {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p1.X;
-                                nearest_coordinate.Y = e.Location.Y;
+                                temp_dist = Math.Abs(o.p2.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = e.Location.X;
+                                    nearest_coordinate.Y = o.p2.Y;
+                                }
                             }
-                        }
-                        else if (e.Location.X <= o.p2.X)
-                        {
-                            temp_dist = Math.Abs(o.p1.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
+                            else
                             {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = e.Location.X;
-                                nearest_coordinate.Y = o.p1.Y;
-                            }
-                            temp_dist = Math.Abs(o.p2.X - e.Location.X);
-                            if (nearest_dist >= temp_dist)
-                            {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p2.X;
-                                nearest_coordinate.Y = e.Location.Y;
-                            }
-                            temp_dist = Math.Abs(o.p2.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
-                            {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = e.Location.X;
-                                nearest_coordinate.Y = o.p2.Y;
-                            }
-                            temp_dist = Math.Abs(o.p1.X - e.Location.X);
-                            if (nearest_dist >= temp_dist)
-                            {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p1.X;
-                                nearest_coordinate.Y = e.Location.Y;
-                            }
-                        }
-                        else
-                        {
-                            temp_dist = Math.Abs(o.p2.X - e.Location.X);
-                            if (nearest_dist >= temp_dist)
-                            {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p2.X;
-                                nearest_coordinate.Y = e.Location.Y;
+                                temp_dist = Math.Abs(o.p2.X - e.Location.X) + Math.Abs(o.p2.Y - e.Location.Y);
+                                if (nearest_dist >= temp_dist)
+                                {
+                                    nearest_dist = temp_dist;
+                                    nearest_coordinate.X = o.p2.X;
+                                    nearest_coordinate.Y = o.p2.Y;
+                                }
                             }
                         }
                     }
-                    else
-                    {
-                        if (e.Location.X <= o.p1.X)
-                        {
-                            temp_dist = Math.Abs(o.p1.X - e.Location.X) + Math.Abs(o.p2.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
-                            {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p1.X;
-                                nearest_coordinate.Y = o.p2.Y;
-                            }
-                        }
-                        else if (e.Location.X <= o.p2.X)
-                        {
-                            temp_dist = Math.Abs(o.p2.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
-                            {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = e.Location.X;
-                                nearest_coordinate.Y = o.p2.Y;
-                            }
-                        }
-                        else
-                        {
-                            temp_dist = Math.Abs(o.p2.X - e.Location.X) + Math.Abs(o.p2.Y - e.Location.Y);
-                            if (nearest_dist >= temp_dist)
-                            {
-                                nearest_dist = temp_dist;
-                                nearest_coordinate.X = o.p2.X;
-                                nearest_coordinate.Y = o.p2.Y;
-                            }
-                        }
-                    }
-                }
 
-                objs.Add(objName, nearest_coordinate, 10, 10, 10, objType); // 가장 가까운 점으로 보낸다.
-                listObj.Items.Add(objs.Last().name + " " + nearest_coordinate + " " + objs.Last().objType);
-                //objs.Add(objName, e.Location, 10, 10, 10, objType);
-                //listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
+                    objs.Add(objName, nearest_coordinate, 10, 10, 10, objType); // 가장 가까운 점으로 보낸다.
+                    listObj.Items.Add(objs.Last().name + " " + nearest_coordinate + " " + objs.Last().objType);
+                }
+                else
+                {
+                    objs.Add(objName, e.Location, 10, 10, 10, objType);
+                    listObj.Items.Add(objs.Last().name + " " + e.Location + " " + objs.Last().objType);
+                }
 
                 panel1.Refresh();
 
