@@ -69,5 +69,48 @@ namespace interior
                 }
             }
         }
+
+        Pen pen = new Pen(Color.Black);
+        Rectangle r = new Rectangle();
+        bool isHold = false;
+
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            r.Location = e.Location;
+            isHold = true;
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isHold)
+            {
+                int width = e.Location.X - r.Location.X;
+                int height = e.Location.Y - r.Location.Y;
+
+                r.Width = width;
+                r.Height = height;
+
+                panel1.Invalidate();
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            int width = e.Location.X - r.Location.X;
+            int height = e.Location.X - r.Location.X;
+
+            r.Width = width;
+            r.Height = height;
+
+            isHold = false;
+            panel1.Invalidate();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(pen, r);
+        }
     }
 }
