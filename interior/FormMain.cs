@@ -160,10 +160,12 @@ namespace interior
         Point start, end;
         Walllist rooms = new Walllist();
         ObjList objs = new ObjList();
+        List<int> blocked_list = new List<int>();
 
 
         void Detecter()
         {
+            blocked_list.Clear();
             int roomcnt = rooms.Count;
             int objcnt = 0; // 문과 창문의 개수
             int idx = 0; // just indexing
@@ -233,8 +235,7 @@ namespace interior
                 {
                     // 닫힌 공간 해주세요
                     flag = true;
-                    break;
-
+                    blocked_list.Add(i);    // 닫힌 공간 담은 list
                 }
             }
         }
