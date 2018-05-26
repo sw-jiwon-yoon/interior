@@ -118,6 +118,7 @@ namespace interior
         Rectangle r = new Rectangle();
         Pen redPen = new Pen(Color.Red);
         Pen bluePen = new Pen(Color.Blue);
+        Pen purplePen = new Pen(Color.Purple);
         bool isHold = false;
         Walllist rooms = new Walllist();
         Point start, end;
@@ -177,8 +178,8 @@ namespace interior
             {
                 if (isHold)
                 {
-                    end = e.Location;
-            //        panel1.Invalidate();
+                    panel1.CreateGraphics().DrawLine(purplePen, start, e.Location);
+                    panel1.Invalidate(true);
                 }
             }
         }
@@ -458,10 +459,6 @@ namespace interior
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            if (mode == 2)
-            {
-                e.Graphics.DrawLine(bluePen, start, end);
-            }
             foreach (Wall o in rooms)
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);

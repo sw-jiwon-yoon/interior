@@ -40,7 +40,7 @@
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.제작ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblWarn = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1 = new interior.DoubleBufferedPanel();
             this.listRoom = new System.Windows.Forms.ListBox();
             this.btnRoomCreate = new System.Windows.Forms.Button();
             this.btnRoomRemove = new System.Windows.Forms.Button();
@@ -282,7 +282,7 @@
         private System.Windows.Forms.ToolStripMenuItem 제작ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 새로만들기ToolStripMenuItem;
         private System.Windows.Forms.Label lblWarn;
-        private System.Windows.Forms.Panel panel1;
+        private interior.DoubleBufferedPanel panel1;
         private System.Windows.Forms.ListBox listRoom;
         private System.Windows.Forms.Button btnRoomCreate;
         private System.Windows.Forms.Button btnRoomRemove;
