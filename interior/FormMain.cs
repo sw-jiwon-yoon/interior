@@ -156,7 +156,9 @@ namespace interior
             }
             else if (mode == 2)
             {
+                isHold = true;
                 start = e.Location;
+   //             panel1.Invalidate();
             }
         }
 
@@ -183,6 +185,14 @@ namespace interior
                     r.Height = height;
 
                     panel1.Invalidate();
+                }
+            }
+            else if(mode == 2)
+            {
+                if (isHold)
+                {
+                    end = e.Location;
+            //        panel1.Invalidate();
                 }
             }
         }
@@ -270,10 +280,11 @@ namespace interior
             else if (mode == 2)
             {
                 end = e.Location;
-
+                panel1.Refresh();
                 double distance = Math.Sqrt((double)((start.X - end.X) * (start.X - end.X) + (start.Y - end.Y) * (start.Y - end.Y)));
                 MessageBox.Show(string.Format("길이 : {0,0:F2}", distance));
                 mode = 0;
+                isHold = false;
             }
             
         }
@@ -304,6 +315,10 @@ namespace interior
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+            if (mode == 2)
+            {
+                e.Graphics.DrawLine(bluePen, start, end);
+            }
             foreach (Wall o in rooms)
             {
                 Rectangle temp = new Rectangle(o.p1.X, o.p1.Y, o.p2.X - o.p1.X, o.p2.Y - o.p1.Y);
