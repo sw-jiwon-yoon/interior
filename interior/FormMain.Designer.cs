@@ -218,6 +218,7 @@
             this.btnObjRemove.TabIndex = 9;
             this.btnObjRemove.Text = "객체 삭제";
             this.btnObjRemove.UseVisualStyleBackColor = true;
+            this.btnObjRemove.Click += new System.EventHandler(this.btnObjRemove_Click);
             // 
             // listObj
             // 
@@ -259,6 +260,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Self Interior Program";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

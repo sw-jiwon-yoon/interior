@@ -58,6 +58,7 @@
             this.listType.Size = new System.Drawing.Size(139, 94);
             this.listType.TabIndex = 0;
             this.listType.Click += new System.EventHandler(this.listType_Click);
+            this.listType.SelectedIndexChanged += new System.EventHandler(this.listType_SelectedIndexChanged);
             // 
             // label1
             // 
