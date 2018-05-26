@@ -400,7 +400,7 @@ namespace interior
                 }
                 else // (mode == 1)
                 {
-                    // 객체가 벽과 충돌을 일으키는 지에 대해서 탐구하자.
+                    // 객체가 벽과 충돌을 일으키는가 판단.
                     bool conflict_chk = false;
                     foreach (Wall o in rooms)
                     {
