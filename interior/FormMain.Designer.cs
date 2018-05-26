@@ -86,12 +86,14 @@
             this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
             this.파일ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.파일ToolStripMenuItem.Text = "파일";
+            this.파일ToolStripMenuItem.Click += new System.EventHandler(this.파일ToolStripMenuItem_Click);
             // 
             // 새로만들기ToolStripMenuItem
             // 
             this.새로만들기ToolStripMenuItem.Name = "새로만들기ToolStripMenuItem";
-            this.새로만들기ToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.새로만들기ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.새로만들기ToolStripMenuItem.Text = "새로 만들기";
+            this.새로만들기ToolStripMenuItem.Click += new System.EventHandler(this.새로만들기ToolStripMenuItem_Click);
             // 
             // 열기ToolStripMenuItem
             // 

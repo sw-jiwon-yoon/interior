@@ -227,6 +227,18 @@ namespace interior
             mode = 2;
         }
 
+        private void 파일ToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            
+        }
+
+        private void 새로만들기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rooms.Clear();
+            listRoom.Items.Clear();
+            panel1.Refresh();
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             foreach (Wall o in rooms)
