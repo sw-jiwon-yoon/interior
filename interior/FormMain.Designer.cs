@@ -46,7 +46,7 @@
             // 
             // btnObjCreate
             // 
-            this.btnObjCreate.Location = new System.Drawing.Point(802, 63);
+            this.btnObjCreate.Location = new System.Drawing.Point(826, 48);
             this.btnObjCreate.Name = "btnObjCreate";
             this.btnObjCreate.Size = new System.Drawing.Size(116, 41);
             this.btnObjCreate.TabIndex = 0;
