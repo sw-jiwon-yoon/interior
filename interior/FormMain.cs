@@ -124,8 +124,8 @@ namespace interior
         Pen bluePen = new Pen(Color.Blue);
         Pen purplePen = new Pen(Color.Purple);
         bool isHold = false;
-        Walllist rooms = new Walllist();
         Point start, end;
+        Walllist rooms = new Walllist();
         ObjList objs = new ObjList();
 
         
@@ -195,7 +195,6 @@ namespace interior
             {
                 int panel1Width = panel1.Size.Width;
                 int panel1Height = panel1.Size.Height;
-                //Console.WriteLine(string.Format("args1: {0} args2: {1}", panel1Width, panel1Height));
                 end = e.Location;
 
                 //좌표 값이 넘어가게되면 panel의 끝 좌표를 넣어준다.
