@@ -108,6 +108,9 @@ namespace interior
                 r.Location = e.Location;
                 isHold = true;
                 start = e.Location;
+            } else if (mode == 2)
+            {
+                start = e.Location;
             }
         }
 
@@ -179,6 +182,14 @@ namespace interior
                     lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
                 }
             }
+            else if (mode == 2)
+            {
+                end = e.Location;
+
+                double distance = Math.Sqrt((double)((start.X - end.X) * (start.X - end.X) + (start.Y - end.Y) * (start.Y - end.Y)));
+                MessageBox.Show(string.Format("길이 : {0,0:F2}", distance));
+                mode = 0;
+            }
 
             panel1.Invalidate();
         }
@@ -190,7 +201,7 @@ namespace interior
 
         private void btnMeasure_Click(object sender, EventArgs e)
         {
-
+            mode = 2;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
