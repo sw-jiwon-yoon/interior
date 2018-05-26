@@ -34,7 +34,7 @@ namespace interior.Dialogs
         {
             get
             {
-                return int.Parse(txtX.ToString());
+                return int.Parse(txtX.Text);
             }
 
         }
@@ -43,7 +43,7 @@ namespace interior.Dialogs
         {
             get
             {
-                return int.Parse(txtY.ToString());
+                return int.Parse(txtY.Text);
             }
 
         }
@@ -52,7 +52,7 @@ namespace interior.Dialogs
         {
             get
             {
-                return int.Parse(txtZ.ToString());
+                return int.Parse(txtZ.Text);
             }
 
         }
