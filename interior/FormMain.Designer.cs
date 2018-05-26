@@ -48,6 +48,7 @@
             this.btnObjEdit = new System.Windows.Forms.Button();
             this.btnObjRemove = new System.Windows.Forms.Button();
             this.listObj = new System.Windows.Forms.ListBox();
+            this.btnMeasure = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,39 +90,39 @@
             // 새로만들기ToolStripMenuItem
             // 
             this.새로만들기ToolStripMenuItem.Name = "새로만들기ToolStripMenuItem";
-            this.새로만들기ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.새로만들기ToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.새로만들기ToolStripMenuItem.Text = "새로 만들기";
             // 
             // 열기ToolStripMenuItem
             // 
             this.열기ToolStripMenuItem.Name = "열기ToolStripMenuItem";
-            this.열기ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.열기ToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.열기ToolStripMenuItem.Text = "열기";
             this.열기ToolStripMenuItem.Click += new System.EventHandler(this.열기ToolStripMenuItem_Click);
             // 
             // 저장ToolStripMenuItem
             // 
             this.저장ToolStripMenuItem.Name = "저장ToolStripMenuItem";
-            this.저장ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.저장ToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.저장ToolStripMenuItem.Text = "저장";
             this.저장ToolStripMenuItem.Click += new System.EventHandler(this.저장ToolStripMenuItem_Click);
             // 
             // 이미지로저장ToolStripMenuItem
             // 
             this.이미지로저장ToolStripMenuItem.Name = "이미지로저장ToolStripMenuItem";
-            this.이미지로저장ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.이미지로저장ToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.이미지로저장ToolStripMenuItem.Text = "이미지로 저장";
             this.이미지로저장ToolStripMenuItem.Click += new System.EventHandler(this.이미지로저장ToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(213, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(176, 6);
             // 
             // 끝내기ToolStripMenuItem
             // 
             this.끝내기ToolStripMenuItem.Name = "끝내기ToolStripMenuItem";
-            this.끝내기ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.끝내기ToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.끝내기ToolStripMenuItem.Text = "끝내기";
             this.끝내기ToolStripMenuItem.Click += new System.EventHandler(this.끝내기ToolStripMenuItem_Click);
             // 
@@ -136,7 +137,7 @@
             // 제작ToolStripMenuItem
             // 
             this.제작ToolStripMenuItem.Name = "제작ToolStripMenuItem";
-            this.제작ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.제작ToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
             this.제작ToolStripMenuItem.Text = "제작";
             this.제작ToolStripMenuItem.Click += new System.EventHandler(this.제작ToolStripMenuItem_Click);
             // 
@@ -225,12 +226,23 @@
             this.listObj.Size = new System.Drawing.Size(270, 289);
             this.listObj.TabIndex = 10;
             // 
+            // btnMeasure
+            // 
+            this.btnMeasure.Location = new System.Drawing.Point(841, 55);
+            this.btnMeasure.Name = "btnMeasure";
+            this.btnMeasure.Size = new System.Drawing.Size(80, 43);
+            this.btnMeasure.TabIndex = 11;
+            this.btnMeasure.Text = "길이 측정";
+            this.btnMeasure.UseVisualStyleBackColor = true;
+            this.btnMeasure.Click += new System.EventHandler(this.btnMeasure_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1407, 717);
+            this.Controls.Add(this.btnMeasure);
             this.Controls.Add(this.listObj);
             this.Controls.Add(this.btnObjRemove);
             this.Controls.Add(this.btnObjEdit);
@@ -274,6 +286,7 @@
         private System.Windows.Forms.Button btnObjEdit;
         private System.Windows.Forms.Button btnObjRemove;
         private System.Windows.Forms.ListBox listObj;
+        private System.Windows.Forms.Button btnMeasure;
     }
 }
 
