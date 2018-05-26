@@ -220,7 +220,7 @@ namespace interior
                     bool conflict_chk = false;
                     foreach (Wall o in rooms)
                     {
-                    
+
                         if ((o.p2.X <= start.X) || (end.X <= o.p1.X) || (o.p2.Y <= start.Y) || (end.Y <= o.p1.Y))   // 만족하면 충돌이 없다.
                         {
                             continue;
@@ -258,12 +258,27 @@ namespace interior
         }
         private void btnRoomRemove_Click(object sender, EventArgs e)
         {
+            rooms.RemoveAt(listRoom.SelectedIndex);
             listRoom.Items.Remove(listRoom.SelectedItem);
+
+            panel1.Refresh();
         }
 
         private void btnMeasure_Click(object sender, EventArgs e)
         {
             mode = 2;
+        }
+
+        private void 파일ToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            
+        }
+
+        private void 새로만들기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rooms.Clear();
+            listRoom.Items.Clear();
+            panel1.Refresh();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
