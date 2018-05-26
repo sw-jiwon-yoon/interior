@@ -628,7 +628,6 @@ namespace interior
                 }
                 else
                 {
-
                     e.Graphics.DrawRectangle(pen, temp);
                     Detecter();
                 }
