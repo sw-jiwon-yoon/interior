@@ -114,7 +114,9 @@ namespace interior
             end = e.Location;
             rooms.Add(start, end, 10);
             isHold = false;
-   //         panel1.Invalidate();
+            //         panel1.Invalidate();
+
+            lblWarn.Text = rooms.Last().p1.X + " " + rooms.Last().p1.Y + " " + rooms.Last().p2.X + " " + rooms.Last().p2.Y + " " + rooms.Last().height;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
