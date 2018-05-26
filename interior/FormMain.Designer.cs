@@ -136,7 +136,7 @@
             // lblWarn
             // 
             this.lblWarn.AutoSize = true;
-            this.lblWarn.Location = new System.Drawing.Point(30, 510);
+            this.lblWarn.Location = new System.Drawing.Point(6, 534);
             this.lblWarn.Name = "lblWarn";
             this.lblWarn.Size = new System.Drawing.Size(60, 15);
             this.lblWarn.TabIndex = 0;
@@ -144,6 +144,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(796, 494);
@@ -157,6 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(970, 556);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblWarn);
