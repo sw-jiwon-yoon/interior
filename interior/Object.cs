@@ -9,8 +9,9 @@ namespace interior
 {
     public class Object
     {
-        public int width;
-        public int height;
+        public int x;
+        public int y;
+        public int z;
         public string name;
 
         // public Image texture;
@@ -18,10 +19,14 @@ namespace interior
 
     public class ObjList : List<Object>
     {
-        public void Add(Point p1, Point p2, int height)
+        public void Add(string name, int x, int y, int z)
         {
             var data = new Object
             {
+                name = name,
+                x = x,
+                y = y,
+                z = z
             };
             this.Add(data);
         }
