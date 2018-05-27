@@ -154,6 +154,7 @@
             this.txtObjname.Name = "txtObjname";
             this.txtObjname.Size = new System.Drawing.Size(100, 25);
             this.txtObjname.TabIndex = 11;
+            this.txtObjname.TextChanged += new System.EventHandler(this.txtObjname_TextChanged);
             // 
             // txtUsrObj
             // 

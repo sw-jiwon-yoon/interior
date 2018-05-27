@@ -49,6 +49,7 @@
             this.listObjEdit.Name = "listObjEdit";
             this.listObjEdit.Size = new System.Drawing.Size(120, 58);
             this.listObjEdit.TabIndex = 0;
+            this.listObjEdit.SelectedIndexChanged += new System.EventHandler(this.listObjEdit_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -56,6 +57,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 25);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -90,6 +92,7 @@
             this.btnOk.TabIndex = 5;
             this.btnOk.Text = "확인";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -99,6 +102,7 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "취소";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // DlgObjEdit
             // 

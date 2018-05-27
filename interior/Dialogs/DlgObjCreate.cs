@@ -149,5 +149,10 @@ namespace interior.Dialogs
         {
 
         }
+
+        private void txtObjname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

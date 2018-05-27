@@ -610,20 +610,34 @@ namespace interior
         {
 
         }
-        
+
         private void btnObjEdit_Click(object sender, EventArgs e)
         {
-            int index = listObj.SelectedIndex;
-            if (index < objs.Capacity && index >= 0)
+            int editedx, editedy;
+            DlgObjEdit dlgObjCreate = new DlgObjEdit();
+            dlgObjCreate.ShowDialog();
+            if (dlgObjCreate.DialogResult == DialogResult.OK)
             {
-                editingObj = objs[index];
+                int index = listObj.SelectedIndex;
+                if (index < objs.Capacity && index >= 0)
+                {
+                    editingObj = objs[index];
 
-                int tmp = editingObj.x;
-                editingObj.x = editingObj.y;
-                editingObj.y = tmp;
-                panel1.Refresh();
+                    if(dlgObjCreate.)
+                    int tmp = editingObj.x;
+                    editingObj.x = editingObj.y;
+                    editingObj.y = tmp;
+                    panel1.Refresh();
+
+                }
+
+                editedx = dlgObjCreate.XGave;
+                editedy = dlgObjCreate.YGave;
+
+                editingObj.x = editedx;
+                editingObj.y = editedy;
+
             }
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
