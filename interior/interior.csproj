@@ -87,6 +87,12 @@
     <Compile Include="Dialogs\DlgObjCreate.Designer.cs">
       <DependentUpon>DlgObjCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DlgObjEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DlgObjEdit.Designer.cs">
+      <DependentUpon>DlgObjEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dialogs\DlgObjCreate.resx">
       <DependentUpon>DlgObjCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DlgObjEdit.resx">
+      <DependentUpon>DlgObjEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
