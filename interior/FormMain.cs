@@ -242,6 +242,7 @@ namespace interior
             if(!flag)
                 lblWarn.Text = "닫힌 공간이 없습니다.";
         }
+        Object editingObj;
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -263,6 +264,7 @@ namespace interior
                 isHold = true;
                 start = e.Location;
             }
+
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -327,6 +329,7 @@ namespace interior
 
                 r.Width = width;
                 r.Height = height;
+
 
                 isHold = false; // 마우스 클릭 해제
 
@@ -602,6 +605,21 @@ namespace interior
 
         private void btnRoomEdit_Click(object sender, EventArgs e)
         {
+
+        }
+        
+        private void btnObjEdit_Click(object sender, EventArgs e)
+        {
+            int index = listObj.SelectedIndex;
+            if (index < objs.Capacity && index >= 0)
+            {
+                editingObj = objs[index];
+
+                int tmp = editingObj.x;
+                editingObj.x = editingObj.y;
+                editingObj.y = tmp;
+                panel1.Refresh();
+            }
 
         }
 

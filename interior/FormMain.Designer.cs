@@ -188,6 +188,7 @@
             this.btnObjEdit.TabIndex = 8;
             this.btnObjEdit.Text = "객체 편집";
             this.btnObjEdit.UseVisualStyleBackColor = true;
+            this.btnObjEdit.Click += new System.EventHandler(this.btnObjEdit_Click);
             // 
             // btnObjRemove
             // 
