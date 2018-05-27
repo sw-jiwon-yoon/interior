@@ -623,19 +623,25 @@ namespace interior
                 {
                     editingObj = objs[index];
 
-                    if(dlgObjCreate.)
-                    int tmp = editingObj.x;
-                    editingObj.x = editingObj.y;
-                    editingObj.y = tmp;
-                    panel1.Refresh();
+                    if (dlgObjCreate.contGave == "회전")
+                    {
+                        int tmp = editingObj.x;
+                        editingObj.x = editingObj.y;
+                        editingObj.y = tmp;
+                        panel1.Refresh();
+                    }
+                    else if(dlgObjCreate.contGave == "크기 조정")
+                    {
+
+                        editedx = dlgObjCreate.XGave;
+                        editedy = dlgObjCreate.YGave;
+
+                        editingObj.x = editedx;
+                        editingObj.y = editedy;
+                    }
 
                 }
 
-                editedx = dlgObjCreate.XGave;
-                editedy = dlgObjCreate.YGave;
-
-                editingObj.x = editedx;
-                editingObj.y = editedy;
 
             }
         }

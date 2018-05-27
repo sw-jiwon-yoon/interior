@@ -34,6 +34,14 @@ namespace interior.Dialogs
             }
 
         }
+
+        public string contGave
+        { //가로
+            get
+            {
+                return listObjEdit.SelectedItem.ToString();
+            }
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
         }
